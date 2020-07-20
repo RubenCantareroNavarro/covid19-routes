@@ -8,7 +8,6 @@ ox.config(log_console=True, use_cache=True)
 
 
 # define a bounding box in Ciudad Real
-# north, south, east, west = 37.79, 37.78, -122.41, -122.43
 north, south, east, west = 39.012350, 38.954487, -3.958351, -3.863268
 
 
