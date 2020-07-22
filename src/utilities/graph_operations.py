@@ -2,7 +2,7 @@
 # -*- coding: utf-8; mode: python3; -*-
 
 import networkx as nx
-
+import utilities
 
 def dijkstra(graph, start, end):
     distances = {}
@@ -40,7 +40,15 @@ def dijkstra(graph, start, end):
 
     return path[::-1], distances[end]
 
-def set_weight(G, nodes):
-#  ToDo
+def set_weight(G, nodes_near, correction_factor=1):
+    nodes_near_amenities_ids = [node.id for node in nodes_near]
+
     for node1, node2, d, data in G.edges(keys=True, data=True):
-        G[node1][node2][d]["weight"] = G[node1][node2][d]["length"]
+        weight = G[node1][node2][d]["length"]
+
+        if node1 in nodes_near_amenities_ids or node2 in nodes_near_amenities_ids:
+            weight = weight * correction_factor
+
+                
+        G[node1][node2][d]["weight"] = weight
+        G[node2][node1][d]["weight"] = weight # ¿Clean?
