@@ -6,6 +6,7 @@ import overpy
 def nodes_near_amenity(bottom_left, top_right, amenity):
   north, south, east, west = top_right[0], bottom_left[0], bottom_left[1], top_right[1]
   api = overpy.Overpass()
+  radius = 50
 
   query = """[out:json]
               [timeout:800]
@@ -21,8 +22,8 @@ def nodes_near_amenity(bottom_left, top_right, amenity):
                   ["amenity"="{amenity}"]
                   ({south}, {east}, {north}, {west});
               )->.amenities;
-              node(around.amenities:50);
-              out geom;""".format(amenity=amenity, north=north, south=south, east=east, west=west)
+              node(around.amenities:{radius});
+              out geom;""".format(amenity=amenity, north=north, south=south, east=east, west=west, radius=radius)
   result = api.query(query)
   all_nodes_near_amenities = result.nodes
 
@@ -42,12 +43,12 @@ def nodes_near_amenity(bottom_left, top_right, amenity):
             )->.amenities;
             way
               ["highway"]
-              (around.amenities:50);
+              (around.amenities:{radius});
             node(w)->.nodes;
             (
               .nodes;
             );
-            out geom;""".format(amenity=amenity,north=north, south=south, east=east, west=west)
+            out geom;""".format(amenity=amenity,north=north, south=south, east=east, west=west, radius=radius)
   result = api.query(query)
 
 

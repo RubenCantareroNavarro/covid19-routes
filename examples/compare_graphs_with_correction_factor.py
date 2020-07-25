@@ -19,7 +19,7 @@ north, south, east, west = top_right[0], bottom_left[0], bottom_left[1], top_rig
 # Route data
 origin = (39.001441, -3.924548)
 destination = (38.976429, -3.930899)
-amenity = "school"
+amenity = "school" # Also is posible about banks, hosìtals, etc.
 cf = 5000000
 
 # Create network from that bounding box
