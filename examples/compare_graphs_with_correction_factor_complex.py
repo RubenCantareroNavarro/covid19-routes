@@ -31,10 +31,11 @@ danger_route = nx.shortest_path(G, origin_node, destination_node, weight='length
 
 # Safe route
 nodes_near = []
-nodes_near_school = utilities.nodes_near_amenity(bottom_left, top_right, "school")
+nodes_near_education = utilities.nodes_near_amenity(bottom_left, top_right, "school")
+nodes_near_education.extend(utilities.nodes_near_amenity(bottom_left, top_right, "university"))
 nodes_near_bank = utilities.nodes_near_amenity(bottom_left, top_right, "bank")
 
-for node in nodes_near_school + nodes_near_bank:
+for node in nodes_near_education + nodes_near_bank:
     if node not in nodes_near:
         nodes_near.append(node)
 
@@ -45,10 +46,10 @@ utilities.graph_operations.set_weight(G, nodes_near, correction_factor=cf)
 safe_route = nx.shortest_path(G, origin_node, destination_node, weight='weight')
 
 # Show the simplified network with edges colored by length
-nodes_near_school_ids = [node.id for node in nodes_near_school]
+nodes_near_education_ids = [node.id for node in nodes_near_education]
 nodes_near_bank_ids = [node.id for node in nodes_near_bank]
 
-nc = ['r' if node in nodes_near_school_ids else 'g' if node in nodes_near_bank_ids else 'w' for node in G.nodes()]
+nc = ['r' if node in nodes_near_education_ids else 'g' if node in nodes_near_bank_ids else 'w' for node in G.nodes()]
 ec = ox.plot.get_edge_colors_by_attr(G, attr='weight', cmap='plasma')
 
 fig, ax = ox.plot_graph_routes(G, routes=[safe_route, danger_route], route_colors=['c', 'r'], route_linewidth=6,
