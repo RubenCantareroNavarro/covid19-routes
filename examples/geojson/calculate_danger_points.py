@@ -24,12 +24,6 @@ def create_features(nodes_near, danger_level):
 # define a bounding box in Ciudad Real
 bottom_left = [38.954487, -3.958351]
 top_right = [39.012350, -3.863268]
-north, south, east, west = top_right[0], bottom_left[0], bottom_left[1], top_right[1]
-
-# Route data
-origin = (39.001441, -3.924548)
-destination = (38.976429, -3.930899)
-cf = 5000000
 
 # Safe route
 nodes_near_school = utilities.nodes_near_amenity(bottom_left, top_right, "school")

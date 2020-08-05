@@ -5,6 +5,7 @@ import geopandas as gpd
 import osmnx as ox
 import networkx as nx
 import sys
+import os
 import utilities
 
 ox.config(log_console=True, use_cache=True)
@@ -14,20 +15,9 @@ bottom_left = [38.954487, -3.958351]
 top_right = [39.012350, -3.863268]
 north, south, east, west = top_right[0], bottom_left[0], bottom_left[1], top_right[1]
 
-# Route data
-origin = (float(sys.argv[1]), float(sys.argv[2]))
-destination = (float(sys.argv[3]), float(sys.argv[4]))
-cf = 5000000
 
-# Create network from that bounding box
-G = ox.graph_from_bbox(north, south, east, west, network_type='walk', simplify=True)
-origin_node = ox.get_nearest_node(G, origin)
-destination_node = ox.get_nearest_node(G, destination)
+G = ox.graph_from_bbox(north, south, east, west, network_type='walk', simplify=False)
 
-# Danger route 
-danger_route = nx.shortest_path(G, origin_node, destination_node, weight='length')
-
-# Safe route
 nodes_near = []
 nodes_near_education = utilities.nodes_near_amenity(bottom_left, top_right, "school")
 nodes_near_education.extend(utilities.nodes_near_amenity(bottom_left, top_right, "university"))
@@ -37,10 +27,19 @@ for node in nodes_near_education + nodes_near_bank:
     if node not in nodes_near:
         nodes_near.append(node)
 
-utilities.graph_operations.set_weight(G, nodes_near, correction_factor=cf)
+utilities.graph_operations.set_weight(G, nodes_near, correction_factor=5000000)
 
 
-# Calculate route
+# Route data
+origin = (float(sys.argv[1]), float(sys.argv[2]))
+destination = (float(sys.argv[3]), float(sys.argv[4]))
+
+# Calculate osm nodes near origin and destination
+origin_node = ox.get_nearest_node(G, origin)
+destination_node = ox.get_nearest_node(G, destination)
+
+# Calculate routes
+danger_route = nx.shortest_path(G, origin_node, destination_node, weight='length')
 safe_route = nx.shortest_path(G, origin_node, destination_node, weight='weight')
 
 
@@ -48,8 +47,10 @@ safe_route = nx.shortest_path(G, origin_node, destination_node, weight='weight')
 file_name_safe_route = 'safe_route.geojson'
 file_name_danger_route = 'danger_route.geojson'
 dir_route = './data/'
-utilities.export_route(dir_route, file_name_safe_route, G, safe_route)
-utilities.export_route(dir_route, file_name_danger_route, G, danger_route)
+
+# To changue
+utilities.geojson_to_file(dir_route, file_name_safe_route, utilities.geojson_route(G, safe_route))
+utilities.geojson_to_file(dir_route, file_name_danger_route, utilities.geojson_route(G, danger_route))
 
 
 # Show the simplified network with edges colored by length

@@ -27,7 +27,7 @@ def create_features(nodes_near, danger_level):
 
     return features
 
-def export_danger_points(file_dir, file_name):
+def geojson_danger_points():
     nodes_near_school = utilities.nodes_near_amenity(bottom_left, top_right, "school")
     nodes_near_university = utilities.nodes_near_amenity(bottom_left, top_right, "university")
     nodes_near_bank = utilities.nodes_near_amenity(bottom_left, top_right, "bank")
@@ -38,10 +38,10 @@ def export_danger_points(file_dir, file_name):
 
     feature_collection = geojson.FeatureCollection(features)
 
-    geojson_to_file(file_dir, file_name, feature_collection)
+    return feature_collection
     
 
-def export_route(file_dir, file_name, G, route):
+def geojson_route(G, route):
     nodes_coord = []
     for node_id in route:
         nodes_coord.append([G.nodes[node_id]['x'], G.nodes[node_id]['y']])
@@ -49,6 +49,6 @@ def export_route(file_dir, file_name, G, route):
     line_string = geojson.LineString(nodes_coord)
     feature = geojson.Feature(geometry=line_string)
 
-    geojson_to_file(file_dir, file_name, feature)
+    return feature
 
 
