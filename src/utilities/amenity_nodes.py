@@ -2,14 +2,14 @@
 # -*- coding: utf-8; mode: python3; -*-
 
 import overpy
+import time
 
-def nodes_near_amenity(bottom_left, top_right, amenity):
+def nodes_near_amenity(bottom_left, top_right, amenity, radius):
   north, south, east, west = top_right[0], bottom_left[0], bottom_left[1], top_right[1]
   api = overpy.Overpass()
-  radius = 50
 
   query = """[out:json]
-              [timeout:800]
+              [timeout:10000]
               ;
               (
                 way
@@ -27,8 +27,10 @@ def nodes_near_amenity(bottom_left, top_right, amenity):
   result = api.query(query)
   all_nodes_near_amenities = result.nodes
 
+  time.sleep(30)
+
   query = """[out:json]
-            [timeout:800]
+            [timeout:10000]
             ;
             (
               way

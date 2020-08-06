@@ -49,8 +49,8 @@ file_name_danger_route = 'danger_route.geojson'
 dir_route = './data/'
 
 # To changue
-utilities.geojson_to_file(dir_route, file_name_safe_route, utilities.geojson_route(G, safe_route))
-utilities.geojson_to_file(dir_route, file_name_danger_route, utilities.geojson_route(G, danger_route))
+utilities.geojson_to_file(dir_route, file_name_safe_route, utilities.route_to_geojson(G, safe_route))
+utilities.geojson_to_file(dir_route, file_name_danger_route, utilities.route_to_geojson(G, danger_route))
 
 
 # Show the simplified network with edges colored by length

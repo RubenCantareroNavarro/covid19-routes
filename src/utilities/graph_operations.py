@@ -40,15 +40,21 @@ def dijkstra(graph, start, end):
 
     return path[::-1], distances[end]
 
-def set_weight(G, nodes_near, correction_factor=1):
-    nodes_near_amenities_ids = [node.id for node in nodes_near]
-
+def set_weight(G, bottom_left, top_right):
     for node1, node2, d, data in G.edges(keys=True, data=True):
         weight = G[node1][node2][d]["length"]
-
-        if node1 in nodes_near_amenities_ids or node2 in nodes_near_amenities_ids:
-            weight = weight * correction_factor
-
-                
         G[node1][node2][d]["weight"] = weight
-        G[node2][node1][d]["weight"] = weight # ¿Clean?
+        G[node2][node1][d]["weight"] = weight
+
+    for amenity in utilities.amenities:
+        nodes_near_amenity = (utilities.nodes_near_amenity(bottom_left, top_right, amenity['type'], amenity['radius']))
+        nodes_near_amenity_ids = [node.id for node in nodes_near_amenity]
+       
+        for node1, node2, d, data in G.edges(keys=True, data=True):
+            weight = G[node1][node2][d]["length"]
+
+            if node1 in nodes_near_amenity_ids or node2 in nodes_near_amenity_ids:
+                weight = weight * amenity['correction_factor']
+                G[node1][node2][d]["weight"] = weight
+                G[node2][node1][d]["weight"] = weight # ¿Clean?
+    
