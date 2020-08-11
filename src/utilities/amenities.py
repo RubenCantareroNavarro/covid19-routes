@@ -19,5 +19,35 @@ amenities = [
         'correction_factor': 5000000,
         'danger_level': 1,
         'radius': 50
+    }, 
+      {
+        'type': 'bar',
+        'correction_factor': 5000000,
+        'danger_level': 6,
+        'radius': 50
+    },
+      {
+        'type': 'cafe',
+        'correction_factor': 5000000,
+        'danger_level': 6,
+        'radius': 50
+    }, 
+      {
+        'type': 'cafe',
+        'correction_factor': 5000000,
+        'danger_level': 6,
+        'radius': 50
+    },
+    {
+        'type': 'pub',
+        'correction_factor': 5000000,
+        'danger_level': 6,
+        'radius': 50
+    },
+    {
+        'type': 'restaurant',
+        'correction_factor': 5000000,
+        'danger_level': 4,
+        'radius': 50
     }
 ]
