@@ -2,6 +2,8 @@
 # -*- coding: utf-8; mode: python3; -*-
 
 import networkx as nx
+import osmnx as ox
+import os
 import utilities
 
 def dijkstra(graph, start, end):
@@ -57,4 +59,15 @@ def set_weight(G, bottom_left, top_right):
                 weight = weight * amenity['correction_factor']
                 G[node1][node2][d]["weight"] = weight
                 G[node2][node1][d]["weight"] = weight # ¿Clean?
+
+def init_graph(bottom_left, top_right, graph_file_cache):
+    if os.path.isfile(graph_file_cache):
+        print("The graph exits. Loading...")
+        G = ox.io.load_graphml(graph_file_cache)
+    else:
+        north, south, east, west = top_right[0], bottom_left[0], bottom_left[1], top_right[1]
+        G = ox.graph_from_bbox(north, south, east, west, network_type='walk', simplify=False)
+        utilities.graph_operations.set_weight(G, bottom_left, top_right)
+        ox.save_graphml(G, graph_file_cache) #SOLVE: por defecto pone el atributo weight como cadena, cuando debe ser un float.
     
+    return G

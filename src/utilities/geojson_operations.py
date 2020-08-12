@@ -4,14 +4,15 @@
 import geopandas as gpd
 import osmnx as ox
 import networkx as nx
+import os
 import sys
 import utilities
 import geojson
 
 ox.config(log_console=True, use_cache=True)
 
-def geojson_to_file(file_dir, file_name, data):
-    with open(file_dir + file_name, 'w') as f:
+def geojson_to_file(file_name, data):
+    with open(file_name, 'w') as f:
         geojson.dump(data, f)
 
 def create_features(nodes_near, danger_level, amenity_near):
@@ -31,7 +32,14 @@ def geojson_danger_points(bottom_left, top_right):
     feature_collection = geojson.FeatureCollection(features)
 
     return feature_collection
-    
+
+def load_danger_points(bottom_left, top_right, danger_nodes_file_cache):
+    if not os.path.isfile(danger_nodes_file_cache):
+        data = utilities.geojson_danger_points(bottom_left, top_right)
+        utilities.geojson_to_file(danger_nodes_file_cache, data)
+
+    with open(danger_nodes_file_cache) as geojson_file:
+        return geojson.load(geojson_file)
 
 def route_to_geojson(G, route):
     nodes_coord = []

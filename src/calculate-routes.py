@@ -7,27 +7,22 @@ import networkx as nx
 import sys
 import os
 import utilities
+import geojson
 
 ox.config(log_console=True, use_cache=True)
 
 # define a bounding box in Ciudad Real
 bottom_left = [38.954487, -3.958351]
 top_right = [39.012350, -3.863268]
-north, south, east, west = top_right[0], bottom_left[0], bottom_left[1], top_right[1]
+graph_file_cache = sys.argv[5]
+danger_nodes_file_cache = sys.argv[6]
 
+G = utilities.init_graph(bottom_left, top_right, graph_file_cache)
+danger_points = utilities.load_danger_points(bottom_left, top_right, danger_nodes_file_cache)
 
-G = ox.graph_from_bbox(north, south, east, west, network_type='walk', simplify=False)
-
-nodes_near = []
-nodes_near_education = utilities.nodes_near_amenity(bottom_left, top_right, "school")
-nodes_near_education.extend(utilities.nodes_near_amenity(bottom_left, top_right, "university"))
-nodes_near_bank = utilities.nodes_near_amenity(bottom_left, top_right, "bank")
-
-for node in nodes_near_education + nodes_near_bank:
-    if node not in nodes_near:
-        nodes_near.append(node)
-
-utilities.graph_operations.set_weight(G, nodes_near, correction_factor=5000000)
+danger_nodes = []
+for feature in danger_points["features"]:
+   danger_nodes.append(feature['properties']['osm_id'])
 
 
 # Route data
@@ -42,22 +37,9 @@ destination_node = ox.get_nearest_node(G, destination)
 danger_route = nx.shortest_path(G, origin_node, destination_node, weight='length')
 safe_route = nx.shortest_path(G, origin_node, destination_node, weight='weight')
 
-
-# Export geojson routes
-file_name_safe_route = 'safe_route.geojson'
-file_name_danger_route = 'danger_route.geojson'
-dir_route = './data/'
-
-# To changue
-utilities.geojson_to_file(dir_route, file_name_safe_route, utilities.route_to_geojson(G, safe_route))
-utilities.geojson_to_file(dir_route, file_name_danger_route, utilities.route_to_geojson(G, danger_route))
-
-
-# Show the simplified network with edges colored by length
-nodes_near_education_ids = [node.id for node in nodes_near_education]
-nodes_near_bank_ids = [node.id for node in nodes_near_bank]
-
-nc = ['r' if node in nodes_near_education_ids else 'g' if node in nodes_near_bank_ids else 'w' for node in G.nodes()]
+# Used to give diferent color to nodes
+# nc = ['r' if node in nodes_near_education_ids else 'g' if node in nodes_near_bank_ids else 'w' for node in G.nodes()]
+nc = ['r' if node in danger_nodes else 'w' for node in G.nodes()]
 ec = ox.plot.get_edge_colors_by_attr(G, attr='weight', cmap='plasma')
 
 fig, ax = ox.plot_graph_routes(G, routes=[safe_route, danger_route], route_colors=['c', 'r'], route_linewidth=6,
