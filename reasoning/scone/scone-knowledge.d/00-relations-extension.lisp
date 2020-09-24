@@ -35,26 +35,26 @@
 				  parent symmetric transitive
 				  english inverse)
                            
-	(if (lookup-element iname)
-		;; This node already exists.  See if it is a relation.
-		(if (eq :yes (is-x-a-y? iname *relation*))
-            ;; Yes, add the role restrictions.
-            (progn
-                (setq iname (lookup-element iname))
-                ;; Add the role restrictions, if any.
-                (when a-inst-of
-                    (the-x-of-y-is-a-z *a-rel-element* iname a-inst-of))
-                (when b-inst-of
-                    (the-x-of-y-is-a-z *b-rel-element* iname b-inst-of))
-                (when c-inst-of
-                    (the-x-of-y-is-a-z *c-rel-element* iname c-inst-of))
-            iname)
-            ;; No, complain and do nothing else.
-            (commentary
-            "~&New relation ~S already exists and is not a relation.  Ignoring.~%"
-            iname)
-        )
-    )
+	; (if (lookup-element iname)
+	; 	;; This node already exists.  See if it is a relation.
+	; 	(if (eq :yes (is-x-a-y? iname *relation*))
+    ;         ;; Yes, add the role restrictions.
+    ;         (progn
+    ;             (setq iname (lookup-element iname))
+    ;             ;; Add the role restrictions, if any.
+    ;             (when a-inst-of
+    ;                 (the-x-of-y-is-a-z *a-rel-element* iname a-inst-of))
+    ;             (when b-inst-of
+    ;                 (the-x-of-y-is-a-z *b-rel-element* iname b-inst-of))
+    ;             (when c-inst-of
+    ;                 (the-x-of-y-is-a-z *c-rel-element* iname c-inst-of))
+    ;         iname)
+    ;         ;; No, complain and do nothing else.
+    ;         (commentary
+    ;         "~&New relation ~S already exists and is not a relation.  Ignoring.~%"
+    ;         iname)
+    ;     )
+    ; )
 )
 
 (defun new-extended-statement (a rel b
@@ -66,11 +66,13 @@
 							   iname
 							   english)
 
-	(new-statement a rel b c
-				   context negate
-				   dummy iname english)
+	; (new-statement a rel b c
+	; 			   context negate
+	; 			   dummy iname english)
 
-	(let ((e (new-indv nil rel)))
+	(let ((e (new-statement a rel b c
+				   context negate
+				   dummy iname english)))
 		(when a
 			(x-is-the-y-of-z a *a-rel-element* e))
 		(when b
