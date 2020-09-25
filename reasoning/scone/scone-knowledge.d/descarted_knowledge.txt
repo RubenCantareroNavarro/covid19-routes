@@ -1,0 +1,103 @@
+
+; (new-context {morning} {general})
+; (in-context {morning})
+; (new-extended-statement {school} {is occupied by} {child} :c {high})
+; (new-extended-statement {pub} {is occupied by} {person} :c {low})
+; ;; _____________________________________________________________________
+
+; (new-context {afternoon} {general})
+; (in-context {afternoon})
+; (new-extended-statement {school} {is occupied by} {child} :c {medium})
+; (new-extended-statement {pub} {is occupied by} {person} :c {medium})
+; ;; _____________________________________________________________________
+
+; (new-context {evening} {general})
+; (in-context {evening})
+; (new-extended-statement {school} {is occupied by} {child} :c {zero})
+; (new-extended-statement {pub} {is occupied by} {person} :c {high})
+; ;; _____________________________________________________________________
+
+; (in-context {general})
+
+;; (in-context {morning})
+;; (list-all-x-of-y {COVID-19 danger level} {school})
+;; (is-x-a-y? (the-x-role-of-y {COVID-19 danger level} {school}) {high})
+;; (the-x-of-y {COVID-19 danger level} {school})
+;; (a-x-of-y {COVID-19 danger level} {school})
+
+
+;; Knowledge to work with the level of danger of potential transmitters:
+;; A sick person is more dangerous than normal people. Therefore, a space
+;; with a level of occupancy {low} with sick people can be more dangerous than
+;; a space with a medium level of occupancy with normal people.
+
+;; (new-type {potential COVID-19 transmitter} {thing})
+;; (new-is-a {potential COVID-19 transmitter} {dangerous thing})
+;; (new-is-a {person} {potential COVID-19 transmitter})
+;; (new-is-not-a {animal} {potential COVID-19 transmitter})
+
+;; (new-type {person with COVID-19} {sick person})
+;; (x-is-the-y-of-z {high} {danger level} {person with COVID-19})
+
+;; Knowledge to know the people that can be affected by COVID-19
+;; This can be use to avoid rest homes, for example (the danger is their
+;; healty, not yours).
+
+;; (new-type {at risk for COVID-19} {person})
+;; (new-is-a {elderly person} {at risk for COVID-19})
+;; (new-is-a {sick person} {at risk for COVID-19})
+;; (new-is-a {person with pathologies} {at risk for COVID-19})
+;; ____________________________________________________
+
+; ;; ____________________________________________________
+
+; ;; Working only with occupancy:
+; (new-type-role {COVID-19 danger level} {space} {danger level})
+
+; (x-is-the-y-of-z
+;     (the-x-role-of-y {c-rel-element} {is occupied by})
+;     {COVID-19 danger level}
+;     (the-x-role-of-y {a-rel-element} {is occupied by}))
+
+; (x-is-a-y-of-z
+;     (the-x-role-of-y {c-rel-element} {is occupied by})
+;     {COVID-19 danger level}
+;     (the-x-role-of-y {a-rel-element} {is occupied by}))
+
+
+
+; ;; (new-type {sick person} {person})
+; ;; (new-type {person with pathologies} {person})
+
+; (new-type {space} {thing})
+; (new-type {building} {space})
+; (new-is-a {school} {building})
+; (new-type {pub} {building})
+; ;; (new-type {rest home} {building})
+
+; ;; (new-type {disease} {thing})
+; ;; (new-indv {COVID-19} {disease})
+
+; (new-type {level} {measure})
+; (new-type {zero} {level})
+; (new-type {low} {level})
+; (new-type {medium} {level})
+; (new-type {high} {level})	
+
+; (new-type {danger level} {level})
+; (new-type {occupancy level} {level})
+
+; (new-extended-relation {is occupied by}
+;           :a-inst-of {space}
+;           :b-inst-of {person}
+; 		  :c-inst-of {occupancy level})
+
+
+; (new-type {level} {measure})
+; (new-type {zero} {level})
+; (new-type {low} {level})
+; (new-type {medium} {level})
+; (new-type {high} {level})	
+
+; (new-type {danger level} {level})
+; (new-type {occupancy level} {level})

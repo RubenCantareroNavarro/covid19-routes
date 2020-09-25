@@ -1,0 +1,101 @@
+;; The transmission level of a child: HIGH
+(the-x-of-y {transmission risk} {child})
+
+;; The transmission level of a elderly person: low
+(the-x-of-y {transmission risk} {elderly person})
+
+;; The COVID-19 vulnerability level:
+(the-x-of-y {COVID-19 vulnerability level} {child})
+(the-x-of-y {COVID-19 vulnerability level} {elderly person})
+
+;; The occupation type of school: CHILD
+(list-rel {is occupied by} {school})
+(list-rel-inverse {is occupied by} {child})
+
+;; The occupation type of rest home: elderly person
+(list-rel {is occupied by} {rest home})
+(list-rel-inverse {is occupied by} {elderly person})
+
+(car (list-rel {is occupied by} {rest home}))
+
+;; COVID-19 vulnerability level of the occupation type of rest home
+(the-x-of-y {COVID-19 vulnerability level} (car (list-rel {is occupied by} {rest home})))
+
+;; The transmission level level of the occupation type of rest home
+(the-x-of-y {transmission risk level} (car (list-rel {is occupied by} {rest home})))
+
+(the-x-of-y {COVID-19 vulnerability level} (car (list-rel {is occupied by} {school})))
+
+;; For example
+(loop for x in (list-rel {is occupied by} {school})
+   do 
+    (format t "Tipo: ~s" x)
+    (terpri)
+)
+
+
+
+
+;; ____________________________________________________
+(new-measurable-quality {danger level})
+(new-unit {danger level unit} {danger level} nil 1)
+(new-unit {zero} {danger level} {danger level unit} 0)
+(new-unit {low} {danger level} {danger level unit} 4)
+
+
+
+;; ____________________________________________________
+(new-indv-role {time interval duration} {time interval} {time measure})
+(x-is-the-y-of-z 
+    (new-measure 1 {second unit})
+    {time interval duration} 
+    {clock second})   
+
+
+
+
+(new-indv {danger measure} {intangible})
+(new-type-role {COVID-19 danger level} {space} {danger measure})
+
+(x-is-the-y-of-z 
+    (new-measure 1 {danger level unit})
+    {COVID-19 danger level} 
+    {school})
+
+
+(the-x-of-y {COVID-19 danger level} {school})
+
+;; ____________________________________________________
+
+; (the-x-of-y *a-rel-element* iname a-inst-of)
+
+
+
+; (the-x-of-y *b-rel-element* {is occupied by})
+
+; (get-english-names (the-x-role-of-y {a-rel-element} {school}))
+
+
+
+; (the-x-of-y *b-rel-element* {is occupied by})
+
+
+
+; (lookup-element {is occupied by})
+; (lookup-element (is occupied by))
+
+
+; (the-x-of-y *b-rel-element* (lookup-element {is occupied by}))
+
+; (the-x-of-y {b-rel-element} (lookup-element {is occupied by}))
+
+
+; (let (prueba)
+;     (setq prueba (lookup-element {ana}))
+; )
+
+
+; (b-wire (lookup-element {is occupied by}))
+; (iname (b-wire (lookup-element {is occupied by})))
+
+; (bx (lookup-element {is occupied by}))
