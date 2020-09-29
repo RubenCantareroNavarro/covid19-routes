@@ -3,12 +3,12 @@
 
 import clips
 import re
-import geojson
+import json
 from scone_client import SconeClient
 
 level = {"Zero" : 0, "Low" : 3, "Medium" : 6, "High" : 10}
 amenity_types = ["school"]
-amenities = []
+amenities = {}
 
 
 def occupations_from_facts(ocupation_facts):
@@ -35,7 +35,6 @@ def estimate_danger(amenity_type, occupation_level):
         response = parse_scone_sentence(scone.query(query))
         transmission_risk_levels[occupation_type] = float(response[0])
 
-
     if occupation_level == 'ZERO':
         return max(vulnerability_levels.values())
     else:
@@ -60,10 +59,17 @@ if __name__ == "__main__":
     occupations = occupations_from_facts(ocupation_facts)
     print(occupations)
 
+
     for amenity_type in amenity_types:
         ocupation_level = occupations["{}-ocupation ".format(amenity_type)]
         danger = estimate_danger(amenity_type, ocupation_level)
         print("Amenity-type: {}\t Danger:{}".format(amenity_type, danger))
 
+        amenities[amenity_type] = {"correction_factor": danger *100,
+                                    "danger_level": danger,
+                                    "radius": 50}
+
+        with open('../src/amenities_config.json', 'w') as outfile:
+            json.dump(amenities, outfile, indent = 4)
 
     

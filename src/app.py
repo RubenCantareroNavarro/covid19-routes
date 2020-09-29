@@ -8,6 +8,7 @@ import osmnx as ox
 import networkx as nx
 import utilities
 import os
+import json
 
 ox.config(log_console=True, use_cache=True)
 app = Flask(__name__)
@@ -19,7 +20,7 @@ bottom_left = [38.954487, -3.958351]
 top_right = [39.012350, -3.863268]
 graph_file_cache = './cache/ciudad-real-graph.graphml'
 danger_nodes_file_cache = './cache/ciudad-real-danger-nodes.geojson'
-
+amenities_file = 'amenities_config.json'
 
 @app.route('/covid19-routes/api/v1.0/ciudad-real/route/', methods=['GET'])
 def get_route():
@@ -43,17 +44,19 @@ def get_route():
 
 @app.route('/covid19-routes/api/v1.0/ciudad-real/danger-points/', methods=['GET'])
 def get_danger_points():
-    return utilities.load_danger_points(bottom_left, top_right, danger_nodes_file_cache)
+    return utilities.load_danger_points(bottom_left, top_right, danger_nodes_file_cache, amenities)
 
 @app.errorhandler(404)
 def not_found(error):
     return make_response(jsonify({'error': 'Not found'}), 404)
 
 if __name__ == '__main__':
-    G = utilities.init_graph(bottom_left, top_right, graph_file_cache)
-    utilities.load_danger_points(bottom_left, top_right, danger_nodes_file_cache)
-    app.run(debug=True)
+    with open(amenities_file) as geojson_file:
+        amenities = json.load(geojson_file)
+
+    G = utilities.init_graph(bottom_left, top_right, graph_file_cache, amenities)
+    utilities.load_danger_points(bottom_left, top_right, danger_nodes_file_cache, amenities)
+    app.run(debug=True, host='127.0.0.1', port=5001)
 
 
-
-# curl -i "http://127.0.0.1:5000/covid19-routes/api/v1.0/ciudad-real/?route_type=danger&origin_lat=39.001441&origin_lon=-3.924548&destination_lat=38.976429&destination_lon=-3.930899"
+# curl -i "http://127.0.0.1:5001/covid19-routes/api/v1.0/ciudad-real/?route_type=danger&origin_lat=39.001441&origin_lon=-3.924548&destination_lat=38.976429&destination_lon=-3.930899"

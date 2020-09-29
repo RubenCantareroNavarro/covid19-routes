@@ -1,0 +1,14 @@
+{
+    "school": {
+        "correction_factor": 30000.0,
+        "danger_level": 300.0,
+        "radius": 50
+    },
+
+    "hospital": {
+        "correction_factor": 50000.0,
+        "danger_level": 400.0,
+        "radius": 50
+    }
+
+}

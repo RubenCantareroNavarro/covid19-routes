@@ -20,7 +20,7 @@
 (new-indv {transmission risk measure} {intangible})
 (new-type-role {transmission risk level} {potential COVID-19 transmitter} {transmission risk measure})
 (x-is-the-y-of-z 
-    (new-measure 1 {risk level unit})
+    (new-measure 3 {risk level unit})
     {transmission risk level} 
     {elderly person})
 
@@ -30,7 +30,7 @@
     {child})
 
 (x-is-the-y-of-z 
-    (new-measure 5 {risk level unit})
+    (new-measure 10 {risk level unit})
     {transmission risk level} 
     {young person})
 
@@ -47,12 +47,12 @@
     {elderly person})
 
 (x-is-the-y-of-z 
-    (new-measure 1 {vulnerability level unit})
+    (new-measure 3 {vulnerability level unit})
     {COVID-19 vulnerability level} 
     {child})
 
 (x-is-the-y-of-z 
-    (new-measure 1 {vulnerability level unit})
+    (new-measure 3 {vulnerability level unit})
     {COVID-19 vulnerability level} 
     {young person})
 

@@ -7,7 +7,7 @@ import networkx as nx
 import sys
 import os
 import utilities
-import geojson
+import json
 
 ox.config(log_console=True, use_cache=True)
 
@@ -16,9 +16,13 @@ bottom_left = [38.954487, -3.958351]
 top_right = [39.012350, -3.863268]
 graph_file_cache = sys.argv[5]
 danger_nodes_file_cache = sys.argv[6]
+amenities_file = sys.argv[7]
 
-G = utilities.init_graph(bottom_left, top_right, graph_file_cache)
-danger_points = utilities.load_danger_points(bottom_left, top_right, danger_nodes_file_cache)
+with open(amenities_file) as geojson_file:
+   amenities = json.load(geojson_file)
+
+G = utilities.init_graph(bottom_left, top_right, graph_file_cache, amenities)
+danger_points = utilities.load_danger_points(bottom_left, top_right, danger_nodes_file_cache, amenities)
 
 danger_nodes = []
 for feature in danger_points["features"]:

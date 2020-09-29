@@ -13,7 +13,7 @@ ox.config(log_console=True, use_cache=True)
 
 def geojson_to_file(file_name, data):
     with open(file_name, 'w') as f:
-        geojson.dump(data, f)
+        geojson.dump(data, f, indent = 4)
 
 def create_features(nodes_near, danger_level, amenity_near):
     features = []
@@ -23,19 +23,19 @@ def create_features(nodes_near, danger_level, amenity_near):
 
     return features
 
-def geojson_danger_points(bottom_left, top_right):
+def geojson_danger_points(bottom_left, top_right, amenities):
     features = []
-    for amenity in utilities.amenities:
-        nodes_near_amenity = (utilities.nodes_near_amenity(bottom_left, top_right, amenity['type'], amenity['radius']))
-        features.extend(create_features(nodes_near_amenity, amenity['danger_level'], amenity['type']))
+    for amenity in amenities.keys():
+        nodes_near_amenity = (utilities.nodes_near_amenity(bottom_left, top_right, amenity, amenities[amenity]['radius']))
+        features.extend(create_features(nodes_near_amenity, amenities[amenity]['danger_level'], amenity))
 
     feature_collection = geojson.FeatureCollection(features)
 
     return feature_collection
 
-def load_danger_points(bottom_left, top_right, danger_nodes_file_cache):
+def load_danger_points(bottom_left, top_right, danger_nodes_file_cache, amenities):
     if not os.path.isfile(danger_nodes_file_cache):
-        data = utilities.geojson_danger_points(bottom_left, top_right)
+        data = utilities.geojson_danger_points(bottom_left, top_right, amenities)
         utilities.geojson_to_file(danger_nodes_file_cache, data)
 
     with open(danger_nodes_file_cache) as geojson_file:
