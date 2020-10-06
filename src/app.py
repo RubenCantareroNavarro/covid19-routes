@@ -46,6 +46,13 @@ def get_route():
 def get_danger_points():
     return utilities.load_danger_points(bottom_left, top_right, danger_nodes_file_cache, amenities)
 
+@app.route('/covid19-routes/api/v1.0/ciudad-real/survey/', methods=['POST'])
+def add_message():
+    content = request.get_json()
+    print(content)
+    return jsonify(None)
+
+
 @app.errorhandler(404)
 def not_found(error):
     return make_response(jsonify({'error': 'Not found'}), 404)
