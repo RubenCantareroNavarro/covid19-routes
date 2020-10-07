@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8; mode: python3; -*- 
 
+from datetime import datetime
 from flask import Flask, jsonify, abort, make_response, request
 from flask_cors import CORS
 import geopandas as gpd
@@ -20,6 +21,7 @@ bottom_left = [38.954487, -3.958351]
 top_right = [39.012350, -3.863268]
 graph_file_cache = './cache/ciudad-real-graph.graphml'
 danger_nodes_file_cache = './cache/ciudad-real-danger-nodes.geojson'
+survey_directory = "./survey/"
 amenities_file = 'amenities_config.json'
 
 @app.route('/covid19-routes/api/v1.0/ciudad-real/route/', methods=['GET'])
@@ -49,9 +51,20 @@ def get_danger_points():
 @app.route('/covid19-routes/api/v1.0/ciudad-real/survey/', methods=['POST'])
 def add_message():
     content = request.get_json()
-    print(content)
+    dateTimeObj = datetime.now()
+    timestampStr = dateTimeObj.strftime("%d-%b-%Y_%H:%M:%S")
+    file_name = "{}_{}.geojson".format(content["properties"]["case_id"], timestampStr)
+  
+    with open(survey_directory + file_name, 'w') as outfile:
+        json.dump(content, outfile)
+
     return jsonify(None)
 
+@app.route('/covid19-routes/api/v1.0/ciudad-real/survey/get-cases/', methods=['GET'])
+def get_cases():
+    with open(survey_directory + 'cases.json') as f:
+        data = json.load(f)
+        return data
 
 @app.errorhandler(404)
 def not_found(error):
