@@ -11,6 +11,8 @@ import commodity.path
 import utilities
 import os
 import json
+import logging
+
 
 ox.config(log_console=True, use_cache=True)
 app = Flask(__name__)
@@ -43,6 +45,7 @@ def get_route():
     elif route_type == 'danger':
         route = nx.shortest_path(G, origin_node, destination_node, weight='length')
     else:
+        logging.error("Not valid route type.")
         abort(404)
 
     return utilities.route_to_geojson(G, route)
@@ -52,20 +55,26 @@ def get_danger_points():
     return utilities.load_danger_points(bottom_left, top_right, danger_nodes_file_cache, amenities)
 
 @app.route('/covid19-routes/api/v1.0/ciudad-real/survey/', methods=['POST'])
-def add_message():
+def add_survey_response():
     content = request.get_json()
+    case_id = content["properties"]["case_id"]
+
     dateTimeObj = datetime.now()
     timestampStr = dateTimeObj.strftime("%d-%b-%Y_%H:%M:%S")
-    file_name = "{}_{}.geojson".format(content["properties"]["case_id"], timestampStr)
 
-    if not os.path.exists(survey_directory):
+    file_name = "{}_{}.geojson".format(case_id, timestampStr)
+    file_path = os.path.join(survey_directory, case_id)
+
+    if not os.path.exists(file_path):
         try:
-            os.makedirs(survey_directory)
+            os.makedirs(file_path)
         except OSError:
-            print ("Creation of the directory %s failed" % survey_directory)
+            print ("Creation of the directory %s failed" % file_path)
   
-    with open(survey_directory + file_name, 'w') as outfile:
+    with open(os.path.join(file_path, file_name), 'w') as outfile:
         json.dump(content, outfile)
+
+    logging.info('New survey entry: {}'.format(file_name))
 
     return jsonify(None)
 
@@ -80,12 +89,11 @@ def not_found(error):
     return make_response(jsonify({'error': 'Not found'}), 404)
 
 if __name__ == '__main__':
+    logging.basicConfig(filename='history.log',level=logging.DEBUG)
     with open(amenities_file) as geojson_file:
         amenities = json.load(geojson_file)
 
     G = utilities.init_graph(bottom_left, top_right, graph_file_cache, amenities)
     utilities.load_danger_points(bottom_left, top_right, danger_nodes_file_cache, amenities)
+
     app.run(debug=True, host='127.0.0.1', port=5001)
-
-
-# curl -i "http://127.0.0.1:5001/covid19-routes/api/v1.0/ciudad-real/?route_type=danger&origin_lat=39.001441&origin_lon=-3.924548&destination_lat=38.976429&destination_lon=-3.930899"
