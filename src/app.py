@@ -7,6 +7,7 @@ from flask_cors import CORS
 import geopandas as gpd
 import osmnx as ox
 import networkx as nx
+import commodity.path
 import utilities
 import os
 import json
@@ -17,12 +18,14 @@ CORS(app)
 app.config['CORS_HEADERS'] = '*'
 
 # Define and prepare data for Ciudad Real
+project_dir = commodity.path.get_project_dir('.')
 bottom_left = [38.954487, -3.958351]
 top_right = [39.012350, -3.863268]
-graph_file_cache = './cache/ciudad-real-graph.graphml'
-danger_nodes_file_cache = './cache/ciudad-real-danger-nodes.geojson'
-survey_directory = "./survey/"
-amenities_file = 'amenities_config.json'
+graph_file_cache = os.path.join(project_dir, 'src/cache/ciudad-real-graph.graphml')
+danger_nodes_file_cache = os.path.join(project_dir, 'src/cache/ciudad-real-danger-nodes.geojson')
+survey_directory = os.path.join(project_dir, "data/survey/")
+amenities_file = os.path.join(project_dir, 'config/amenities_config.json')
+survey_config_file = os.path.join(project_dir, 'config/validation_survey_cases.json')
 
 @app.route('/covid19-routes/api/v1.0/ciudad-real/route/', methods=['GET'])
 def get_route():
@@ -54,6 +57,12 @@ def add_message():
     dateTimeObj = datetime.now()
     timestampStr = dateTimeObj.strftime("%d-%b-%Y_%H:%M:%S")
     file_name = "{}_{}.geojson".format(content["properties"]["case_id"], timestampStr)
+
+    if not os.path.exists(survey_directory):
+        try:
+            os.makedirs(survey_directory)
+        except OSError:
+            print ("Creation of the directory %s failed" % survey_directory)
   
     with open(survey_directory + file_name, 'w') as outfile:
         json.dump(content, outfile)
@@ -62,7 +71,7 @@ def add_message():
 
 @app.route('/covid19-routes/api/v1.0/ciudad-real/survey/get-cases/', methods=['GET'])
 def get_cases():
-    with open(survey_directory + 'cases.json') as f:
+    with open(survey_config_file) as f:
         data = json.load(f)
         return data
 
