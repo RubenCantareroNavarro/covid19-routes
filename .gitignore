@@ -2,3 +2,4 @@ cache/
 data/
 .vscode/
 __pycache__/
+/themes/
