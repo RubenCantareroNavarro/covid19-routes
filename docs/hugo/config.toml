@@ -2,7 +2,7 @@ baseURL = "https://rubencantareronavarro.github.io/covid19-routes/"
 languageCode = "en-us"
 title = "covid19-routes"
 theme = "OneDly-Theme"
-publishDir = "../docs"
+publishDir = "../"
 
 
 
