@@ -3,23 +3,23 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://example.org/posts/acerca-del-proyecto/</loc>
+    <loc>https://rubencantareronavarro.github.io/covid19-routes/posts/acerca-del-proyecto/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/categories/</loc>
+    <loc>https://rubencantareronavarro.github.io/covid19-routes/categories/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/</loc>
+    <loc>https://rubencantareronavarro.github.io/covid19-routes/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/posts/</loc>
+    <loc>https://rubencantareronavarro.github.io/covid19-routes/posts/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/tags/</loc>
+    <loc>https://rubencantareronavarro.github.io/covid19-routes/tags/</loc>
   </url>
   
 </urlset>
