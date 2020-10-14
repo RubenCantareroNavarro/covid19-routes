@@ -96,4 +96,4 @@ if __name__ == '__main__':
     G = utilities.init_graph(bottom_left, top_right, graph_file_cache, amenities)
     utilities.load_danger_points(bottom_left, top_right, danger_nodes_file_cache, amenities)
 
-    app.run(debug=True, host='127.0.0.1', port=5001)
+    app.run(debug=True, host='127.0.0.1', port=8081)
