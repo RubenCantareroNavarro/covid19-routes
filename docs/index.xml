@@ -20,5 +20,43 @@
 bajuawdu rghhstr</description>
     </item>
     
+    <item>
+      <title>Agradecimientos</title>
+      <link>https://rubencantareronavarro.github.io/covid19-routes/posts/agradecimientos/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://rubencantareronavarro.github.io/covid19-routes/posts/agradecimientos/</guid>
+      <description>Se agradece el tiempo que ha dedicado a realizar esta encuesta. Se recuerda que sus respuestas son almacenadas anónimamente y serán analizadas de forma conjunta con el resto de resultados.</description>
+    </item>
+    
+    <item>
+      <title>Financiación</title>
+      <link>https://rubencantareronavarro.github.io/covid19-routes/posts/financiacion/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://rubencantareronavarro.github.io/covid19-routes/posts/financiacion/</guid>
+      <description>This work was supported by the Spanish Ministry of Science, Innovation and Universities under Grant PLATINO (TEC2017-86722-C4-4-R); Spanish Ministry of Economy and Competitiveness under Grant CITISIM (TSI-102107-2016-8 ITEA3 Nº 15018); Regional Government of Castilla-La Mancha under Grant SymbIoT SBPLY/17 /180501/000334); and Spanish Ministry of Education, Culture and Sport under Grant FPU Program (ref. FPU 16/06205).</description>
+    </item>
+    
+    <item>
+      <title>Guía paso a paso</title>
+      <link>https://rubencantareronavarro.github.io/covid19-routes/posts/procedimiento/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://rubencantareronavarro.github.io/covid19-routes/posts/procedimiento/</guid>
+      <description>Para realizar la encuesta se ha puesto a disposición del encuestado un mapa web que facilitará la introducción de las diferentes rutas. Para acceder a dicho mapa web simplemente debe pulsar en el siguiente enlace. Una vez dentro, el encuestado podrá ver un mapa web centrado en la ciudad de Ciudad Real.
+Como se puede apreciar en la siguiente imagen, la interfaz de dicho mapa es muy sencilla ya que dispone tan solo de unos pocos elementos: un selector de opciones y dos botones.</description>
+    </item>
+    
+    <item>
+      <title>Sobre la encuesta</title>
+      <link>https://rubencantareronavarro.github.io/covid19-routes/posts/sobre_la_encuesta/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://rubencantareronavarro.github.io/covid19-routes/posts/sobre_la_encuesta/</guid>
+      <description>La encuesta se compone de 10 escenarios distintos donde el encuestado debe indicar que ruta seguiría para llegar desde un origen hasta un destino que será marcado en cada uno de los mismos. El encuestado debe tener en cuenta que dicha ruta no debe ser una ruta cualquiera, si no aquella que, desde su punto de vista, maximiza el número de zonas peligrosas visitadas.
+Pero, ¿que entendemos como zonas peligrosas en el ámbito de este estudio?</description>
+    </item>
+    
   </channel>
 </rss>

@@ -33,42 +33,96 @@
 
     <style>
     .navbar {
-    border-color: #e7e7e7;
+    border-color: {
+        {
+            .Site.Params.first_border_color
+        }
+    }
+    ;
 }
 
 .content-section-a,
 footer,
 .navbar {
-  background-color: #f8f8f8;
-  color: #333;
+    background-color: {
+        {
+            .Site.Params.first_color
+        }
+    }
+    ;
+    color: {
+        {
+            .Site.Params.first_text_color
+        }
+    }
+    ;
 }
 
 .navbar a:link,
 .navbar-default .navbar-nav>li>a {
-  color: #777;
+    color: {
+        {
+            .Site.Params.header_link_color
+        }
+    }
+    ;
 }
 
 .navbar a:hover,
 .navbar-default .navbar-nav>li>a:hover {
-  color: rgb(51, 51, 51);
+    color: {
+        {
+            .Site.Params.header_link_hover_color
+        }
+    }
+    ;
 }
 
 .content-section-b {
-  background-color: white;
-  color: #333;
+    background-color: {
+        {
+            .Site.Params.second_color
+        }
+    }
+    ;
+    color: {
+        {
+            .Site.Params.second_text_color
+        }
+    }
+    ;
 }
 
 body {
-  color: rgb(51, 51, 51);
+    color: {
+        {
+            .Site.Params.header_text_color
+        }
+    }
+    ;
 }
 
 .header-container h1,
 .header-container h2,
 .header-container h3,
 .header-container h4 {
-  color: rgb(51, 51, 51);
+    color: {
+        {
+            .Site.Params.header_text_color
+        }
+    }
+    ;
 }
- 
+
+p {
+    text-align: justify !important;
+}
+
+figure {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+} 
   </style>
 
 </head>
@@ -91,7 +145,7 @@ body {
 						
 
 
-  <li><a href="//github.com/https://github.com/RubenCantareroNavarro" class="btn btn-default btn-lg" title="GitHub">
+  <li><a href="//github.com/RubenCantareroNavarro" class="btn btn-default btn-lg" title="GitHub">
   <i class="fa fa-github"></i>
   </a></li>
 
@@ -213,6 +267,129 @@ body {
 gvaelflj</p>
 <p>bajuawdu
 rghhstr</p>
+
+                </div>
+            </div>
+
+        </div>
+        
+
+    </div>
+
+	
+    <div class="content-section-b">
+    
+   
+        <div class="container">
+
+            <div class="row">
+                <div>
+                    
+                    <h2 class="section-heading">Sobre la encuesta</h2>
+                    <p>La encuesta se compone de 10 escenarios distintos donde el encuestado debe <strong>indicar que ruta seguiría</strong> para llegar desde un origen hasta un destino que será marcado en cada uno de los mismos. El encuestado debe tener en cuenta que dicha ruta no debe ser una ruta cualquiera, si no aquella que, desde su punto de vista, <strong>maximiza el número de zonas peligrosas visitadas</strong>.</p>
+<p>Pero, <em>¿que entendemos como zonas peligrosas en el ámbito de este estudio?</em>. Aunque la respuesta se deja a interpretación del encuestado, una posible respuesta podría ser <strong>toda aquella zona que debido a la pandemia de COVID-19 puede poner en peligro nuestra salud o de la gente que nos rodea</strong>. Algunos ejemplos podrían ser los espacios cerrados, colegios, hospitales, etc. que debido a las condiciones que reúnen, facilita la propagación del virus.</p>
+
+                </div>
+            </div>
+
+        </div>
+        
+
+    </div>
+
+	 
+    <div class="content-section-a">
+    
+   
+        <div class="container">
+
+            <div class="row">
+                <div>
+                    
+                    <h2 class="section-heading">Guía paso a paso</h2>
+                    <p>Para realizar la encuesta se ha puesto a disposición del encuestado un mapa web que facilitará la introducción de las diferentes rutas. Para acceder a dicho mapa web simplemente debe pulsar en el siguiente <a href="http://0.0.0.0:8080/src/survey.html"  target="_blank" >
+  enlace.
+</a>Una vez dentro, el encuestado podrá ver un mapa web centrado en la ciudad de Ciudad Real.</p>
+<p>Como se puede apreciar en la siguiente imagen, la interfaz de dicho mapa es muy sencilla ya que dispone tan solo de unos pocos elementos: un selector de opciones y dos botones.</p>
+<figure>
+    <img src="img/map_init.png" width="80%" height="100%"/> 
+</figure>
+
+<p>Una vez que la página se ha cargado por completo, el encuestado deberá proceder a <strong>seleccionar el caso de estudio que desea realizar</strong>. Para ello, deberá dirigirse al selector como se muestra en la siguiente imagen y hacer click sobre el.</p>
+<figure>
+    <img src="img/lista_casos.png" width="80%" height="100%"/> 
+</figure>
+
+<p>Una vez que el usuario ha seleccionado uno de los casos de estudio listados en el selector, se mostrarán en el mapa dos nuevos elementos: 1.) un <strong>marcador verde</strong> que simboliza el origen de la ruta del caso de estudio seleccionado; y 2.) una <strong>línea de meta</strong> que simboliza el destino del caso de uso seleccionado. En la imagen de a continuación se muestra un ejemplo de estos dos elementos.</p>
+<figure>
+    <img src="img/inicio_caso.png" width="80%" height="100%"/> 
+</figure>
+
+<p>En el siguiente paso el encuestado deberá establecer la ruta mediante el uso de marcadores. Para <strong>añadir un nuevo marcador</strong> tan solo será necesario hacer click sobre el botón <em>Add marker</em>. En la siguiente imagen se muestra un ejemplo de este proceso, pudiéndose apreciar como dicho marcador (azul celeste) ha sido añadido junto a la Universidad de Castilla-La Mancha. Además, también se muestra la <strong>ruta parcial</strong> que une el último marcador añadido con el resto.</p>
+<figure>
+    <img src="img/anadir_marcador.png" width="80%" height="100%"/> 
+</figure>
+
+<p>No obstante, es muy posible que por defecto <strong>el marcador no se encuentre en el lugar deseado</strong> por el encuestado. Como se puede apreciar en la siguiente imagen, el marcador que fue añadido en el paso anterior ha sido desplazado a otra posición. Para ello, tan solo será necesario <strong>arrastrar el marcador</strong> a la posición deseada, actualizándose también la ruta parcial entre los marcadores de acuerdo a esta nueva posición.</p>
+<figure>
+    <img src="img/marcador_movido.png" width="80%" height="100%"/> 
+</figure>
+
+<p>Los tres pasos anteriores serán repetidos hasta que la ruta deseada por en el encuestado esté terminada.  En la siguiente imagen se muestra un ejemplo de una ruta terminada.</p>
+<figure>
+    <img src="img/ruta_terminada.png" width="80%" height="100%"/> 
+</figure>
+
+<p>Una vez que el encuestado se encuentre conforme con el diseño de su ruta, podrá proceder a enviar su resultado para ser almacenada. Para ello simplemente tendrá que hacer click sobre el botón <em>Send Result</em> y aceptar el cuadro de diálogo.</p>
+<figure>
+    <img src="img/final_ruta.png" width="80%" height="100%"/> 
+</figure>
+
+<p>Una vez enviada la ruta, el encuestado deberá seleccionar otro caso de estudio que <strong>aún no haya realizado</strong> y repetir el proceso explicado en los párrafos anteriores <strong>hasta que hayan hecho todos</strong>. Como se puede apreciar en la siguiente imagen, los casos de estudio que ya han sido realizados por el encuestado no podrán volver a ser seleccionados.</p>
+<figure>
+    <img src="img/case_disabled.png" width="80%" height="100%"/> 
+</figure>
+
+
+                </div>
+            </div>
+
+        </div>
+        
+
+    </div>
+
+	
+    <div class="content-section-b">
+    
+   
+        <div class="container">
+
+            <div class="row">
+                <div>
+                    
+                    <h2 class="section-heading">Agradecimientos</h2>
+                    <p>Se agradece el tiempo que ha dedicado a realizar esta encuesta.  Se recuerda que sus respuestas son almacenadas anónimamente y serán analizadas de forma conjunta con el resto de resultados.</p>
+
+                </div>
+            </div>
+
+        </div>
+        
+
+    </div>
+
+	 
+    <div class="content-section-a">
+    
+   
+        <div class="container">
+
+            <div class="row">
+                <div>
+                    
+                    <h2 class="section-heading">Financiación</h2>
+                    <p>This work was supported by the Spanish Ministry of Science, Innovation and Universities under Grant <strong>PLATINO (TEC2017-86722-C4-4-R)</strong>; Spanish Ministry of Economy and Competitiveness under <strong>Grant CITISIM (TSI-102107-2016-8  ITEA3  Nº 15018)</strong>; Regional Government of Castilla-La Mancha under Grant <strong>SymbIoT SBPLY/17 /180501/000334)</strong>; and Spanish Ministry of Education, Culture and Sport under <strong>Grant FPU Program (ref. FPU 16/06205)</strong>.</p>
 
                 </div>
             </div>
