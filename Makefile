@@ -17,4 +17,7 @@ run-sbcl:
 	cd $(PROJECT_DIR)/reasoning/scone/; sbcl --load sbcl-file.lisp
 
 run-scone-wrapper:
-	cd $(PROJECT_DIR)/reasoning/scone/; scone-wrapper --Ice.Config=$(PROJECT_DIR)/reasoning/server.config
+	cd $(PROJECT_DIR)/reasoning/scone/; scone-wrapper --Ice.Config=$(PROJECT_DIR)/config/scone_wrapper.config
+
+run-reasoning-ammenities-config:
+	./reasoning/proof_concept.py

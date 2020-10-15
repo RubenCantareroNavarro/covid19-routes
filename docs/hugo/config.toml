@@ -51,7 +51,7 @@ publishDir = "../"
 #
 [social]
     # Coding Communities
-    github           = "cdeck3r/OneDly-Theme"
+    github           = "https://github.com/RubenCantareroNavarro"
     gitlab           = ""
     stackoverflow    = "" # User Number
     bitbucket        = ""
@@ -66,7 +66,7 @@ publishDir = "../"
     wordpress        = ""
     medium           = ""
     # Professional/Business Oriented Communities
-    linkedin         = ""
+    linkedin         = "rub%C3%A9n-cantarero-navarro-31695436/"
     linkedin_company = ""
     foursquare       = ""
     xing             = ""
@@ -76,7 +76,7 @@ publishDir = "../"
     googleplus       = ""
     reddit           = ""
     quora            = ""
-    youtube          = "channel/UCZ5wNVV_E6AA3L3C-mvqwSA"
+    youtube          = ""
     vimeo            = ""
     whatsapp         = "" # WhatsApp Number
     # WeChat and QQ need testing.
@@ -84,7 +84,7 @@ publishDir = "../"
     qq             = "" # User ID Number
     instagram        = ""
     tumblr           = ""
-    twitter          = "cdeck3r"
+    twitter          = "rubencn90"
     skype            = ""
     snapchat         = ""
     pinterest        = ""
@@ -94,7 +94,7 @@ publishDir = "../"
     orcid            = ""
     researchgate     = ""
     # Email
-    email = "info@cdeck3r.com"
+    email = "Ruben.Cantarero@uclm.es"
 
 #
 # Adjust privacy settings

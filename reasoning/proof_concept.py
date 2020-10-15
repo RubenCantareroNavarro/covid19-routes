@@ -4,11 +4,17 @@
 import clips
 import re
 import json
+import os
+import commodity.path
 from scone_client import SconeClient
 
 level = {"Zero" : 0, "Low" : 3, "Medium" : 6, "High" : 10}
 amenity_types = ["school"]
 amenities = {}
+
+project_dir = commodity.path.get_project_dir('.')
+amenities_config_file =  os.path.join(project_dir, 'config/amenities_config_temp.json')
+clips_file = os.path.join(project_dir, 'reasoning/clips/schools_proof_concept.clp')
 
 
 def occupations_from_facts(ocupation_facts):
@@ -43,11 +49,10 @@ def estimate_danger(amenity_type, occupation_level):
 def parse_scone_sentence(sentence):
     return re.findall(r'{(.*?)}', sentence)
 
-
 if __name__ == "__main__":
     scone = SconeClient(host='localhost', port=6517)  # default params
     env = clips.Environment()
-    env.load('./clips/schools_proof_concept.clp')
+    env.load(clips_file)
     env.reset()
 
     # env.assert_string('(context (day-of-week Sunday))')
@@ -69,7 +74,7 @@ if __name__ == "__main__":
                                     "danger_level": danger,
                                     "radius": 50}
 
-        with open('../src/amenities_config.json', 'w') as outfile:
+        with open(amenities_config_file, 'w') as outfile:
             json.dump(amenities, outfile, indent = 4)
 
     
