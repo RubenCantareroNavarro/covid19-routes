@@ -21,3 +21,6 @@ run-scone-wrapper:
 
 run-reasoning-ammenities-config:
 	./reasoning/proof_concept.py
+
+update-hugo-doc:
+	cd $(PROJECT_DIR)/hugo ; hugo -d $(PROJECT_DIR)/docs

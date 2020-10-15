@@ -2,9 +2,7 @@ baseURL = "https://rubencantareronavarro.github.io/covid19-routes/"
 languageCode = "en-us"
 title = "covid19-routes"
 theme = "OneDly-Theme"
-publishDir = "../"
-
-
+publishDir = "./public"
 
 #
 # Personalization params
@@ -14,7 +12,7 @@ publishDir = "../"
     description = "Guía para la realización de la encuesta"
     author_url = "https://directorio.uclm.es/persona.aspx?cod=VitMLWqxyigrTOHPtpDkNw=="
     author_name = "Rubén Cantarero Navarro"
-    project_url = "https://github.com/RubenCantareroNavarro/covid19-routes"
+    project_url = "https://arcoresearch.com/"
 
     # optionally specify where the content is
     # mainSections = ["post"] 
@@ -51,7 +49,7 @@ publishDir = "../"
 #
 [social]
     # Coding Communities
-    github           = "https://github.com/RubenCantareroNavarro"
+    github           = "RubenCantareroNavarro"
     gitlab           = ""
     stackoverflow    = "" # User Number
     bitbucket        = ""
