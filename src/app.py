@@ -4,7 +4,6 @@
 from datetime import datetime
 from flask import Flask, jsonify, abort, make_response, request
 from flask_cors import CORS
-import geopandas as gpd
 import osmnx as ox
 import networkx as nx
 import commodity.path
