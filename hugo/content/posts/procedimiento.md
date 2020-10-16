@@ -9,7 +9,7 @@ sec = 3
 
 Para realizar la encuesta se ha puesto a disposición del encuestado un mapa web que facilitará la introducción de las diferentes rutas. Para acceder a dicho mapa web simplemente debe pulsar en el siguiente [enlace.](http://0.0.0.0:8080/src/survey.html)Una vez dentro, el encuestado podrá ver un mapa web centrado en la ciudad de Ciudad Real. 
 
-Como se puede apreciar en la siguiente imagen, la interfaz de dicho mapa es muy sencilla ya que dispone tan solo de unos pocos elementos: un selector de opciones y dos botones.
+Como se puede apreciar en la siguiente imagen, la interfaz de dicho mapa es muy sencilla ya que dispone tan solo tres elementos: un selector de opciones y dos botones.
 
 {{< figure src="img/map_init.png"  width="80%" height="100%" >}}
 
@@ -17,7 +17,7 @@ Una vez que la página se ha cargado por completo, el encuestado deberá procede
 
 {{< figure src="img/lista_casos.png"  width="80%" height="100%">}}
 
-Una vez que el usuario ha seleccionado uno de los casos de estudio listados en el selector, se mostrarán en el mapa dos nuevos elementos: 1.) un **marcador verde** que simboliza el origen de la ruta del caso de estudio seleccionado; y 2.) una **línea de meta** que simboliza el destino del caso de uso seleccionado. En la imagen de a continuación se muestra un ejemplo de estos dos elementos.
+Una vez que el usuario ha seleccionado uno de los casos de estudio listados en el selector, se mostrarán en el mapa dos nuevos elementos: 1.) un **marcador verde** que simboliza el origen de la ruta del caso de estudio seleccionado; y 2.) una **línea de meta** que simboliza el destino del caso de estudio seleccionado. En la siguiente imagen se muestra un ejemplo de estos dos elementos.
 
 {{< figure src="img/inicio_caso.png" width="80%" height="100%">}}
 
@@ -29,11 +29,11 @@ No obstante, es muy posible que por defecto **el marcador no se encuentre en el 
 
 {{< figure src="img/marcador_movido.png" width="80%" height="100%">}}
 
-Los tres pasos anteriores serán repetidos hasta que la ruta deseada por en el encuestado esté terminada.  En la siguiente imagen se muestra un ejemplo de una ruta terminada. 
+Los dos pasos anteriores serán repetidos hasta que la ruta deseada por en el encuestado esté terminada.  En la siguiente imagen se muestra un ejemplo de una ruta terminada. 
 
 {{< figure src="img/ruta_terminada.png" width="80%" height="100%">}}
 
-Una vez que el encuestado se encuentre conforme con el diseño de su ruta, podrá proceder a enviar su resultado para ser almacenada. Para ello simplemente tendrá que hacer click sobre el botón *Send Result* y aceptar el cuadro de diálogo. 
+Cuando el encuestado se encuentre conforme con el diseño de su ruta, podrá proceder a enviar su resultado para ser almacenada. Para ello simplemente tendrá que hacer click sobre el botón *Send Result* y aceptar el cuadro de diálogo. 
 
 {{< figure src="img/final_ruta.png" width="80%" height="100%">}}
  
