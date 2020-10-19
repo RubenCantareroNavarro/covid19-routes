@@ -11,7 +11,7 @@ run-calculate-route-example:
 	./examples/calculate-routes.py 39.001441 -3.924548 38.976429 -3.930899 './src/cache/ciudad-real-graph.graphml' './src/cache/ciudad-real-danger-nodes.geojson' './config/amenities_config.json'
 
 run-app:
-	./src/app.py
+	./src/covid19_routes_app.py
 
 run-sbcl:
 	cd $(PROJECT_DIR)/reasoning/scone/; sbcl --load sbcl-file.lisp

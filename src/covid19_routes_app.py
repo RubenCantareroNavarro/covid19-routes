@@ -2,7 +2,7 @@
 # -*- coding: utf-8; mode: python3; -*- 
 
 from datetime import datetime
-from flask import Flask, jsonify, abort, make_response, request
+from flask import Flask, jsonify, abort, make_response, request, session
 from flask_cors import CORS
 import osmnx as ox
 import networkx as nx
@@ -27,6 +27,13 @@ danger_nodes_file_cache = os.path.join(project_dir, 'src/cache/ciudad-real-dange
 survey_directory = os.path.join(project_dir, "data/survey/")
 amenities_file = os.path.join(project_dir, 'config/amenities_config.json')
 survey_config_file = os.path.join(project_dir, 'config/validation_survey_cases.json')
+
+with open(amenities_file) as geojson_file:
+        amenities = json.load(geojson_file)
+
+G = utilities.init_graph(bottom_left, top_right, graph_file_cache, amenities)
+utilities.load_danger_points(bottom_left, top_right, danger_nodes_file_cache, amenities)
+
 
 @app.route('/covid19-routes/api/v1.0/ciudad-real/route/', methods=['GET'])
 def get_route():
@@ -89,10 +96,5 @@ def not_found(error):
 
 if __name__ == '__main__':
     logging.basicConfig(filename='history.log',level=logging.DEBUG)
-    with open(amenities_file) as geojson_file:
-        amenities = json.load(geojson_file)
-
-    G = utilities.init_graph(bottom_left, top_right, graph_file_cache, amenities)
-    utilities.load_danger_points(bottom_left, top_right, danger_nodes_file_cache, amenities)
 
     app.run(debug=True, host='0.0.0.0', port=8081)
