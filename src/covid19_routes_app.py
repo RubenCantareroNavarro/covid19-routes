@@ -24,7 +24,7 @@ bottom_left = [38.954487, -3.958351]
 top_right = [39.012350, -3.863268]
 graph_file_cache = os.path.join(project_dir, 'src/cache/ciudad-real-graph.graphml')
 danger_nodes_file_cache = os.path.join(project_dir, 'src/cache/ciudad-real-danger-nodes.geojson')
-survey_directory = os.path.join(project_dir, "~/covid19-routes-data/survey/")
+survey_directory = "/home/ruben/covid19-routes-survey/ciudad-real/"
 amenities_file = os.path.join(project_dir, 'config/amenities_config.json')
 survey_config_file = os.path.join(project_dir, 'config/validation_survey_cases.json')
 
