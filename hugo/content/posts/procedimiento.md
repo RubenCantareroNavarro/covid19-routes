@@ -7,7 +7,7 @@ sec = 3
 +++
  
 
-Para realizar la encuesta se ha puesto a disposición del encuestado un mapa web que facilitará la introducción de las diferentes rutas. Para acceder a dicho mapa web simplemente debe pulsar en el siguiente [enlace.](http://0.0.0.0:8080/src/survey.html)Una vez dentro, el encuestado podrá ver un mapa web centrado en la ciudad de Ciudad Real. 
+Para realizar la encuesta se ha puesto a disposición del encuestado un mapa web que facilitará la introducción de las diferentes rutas. Para acceder a dicho mapa web simplemente debe pulsar en el siguiente [enlace.](https://pike.esi.uclm.es:7166/)Una vez dentro, el encuestado podrá ver un mapa web centrado en la ciudad de Ciudad Real. 
 
 Como se puede apreciar en la siguiente imagen, la interfaz de dicho mapa es muy sencilla ya que dispone tan solo tres elementos: un selector de opciones y dos botones.
 
