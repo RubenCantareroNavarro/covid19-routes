@@ -7,9 +7,9 @@ sec = 3
 +++
  
 
-Para realizar la encuesta se ha puesto a disposición del encuestado un mapa web que facilitará la introducción de las diferentes rutas. Para acceder a dicho mapa web simplemente debe pulsar en el siguiente [enlace.](https://pike.esi.uclm.es:7166/)Una vez dentro, el encuestado podrá ver un mapa web centrado en la ciudad de Ciudad Real. 
+Para realizar la encuesta se ha puesto a disposición del encuestado un mapa web que facilitará la introducción de las diferentes rutas. Para acceder a dicho mapa web simplemente debe pulsar en el siguiente [enlace.](https://pike.esi.uclm.es:7166/)Una vez dentro, el encuestado podrá ver un mapa web centrado en la ciudad de Ciudad Real.   
 
-Como se puede apreciar en la siguiente imagen, la interfaz de dicho mapa es muy sencilla ya que dispone tan solo tres elementos: un selector de opciones y dos botones.
+Como se puede apreciar en la siguiente imagen, la interfaz de dicho mapa es muy sencilla ya que dispone tan solo de unos pocos elementos: un selector de casos, selector para indicar el grado de conocimiento de la ciudad, dos botones y la información del contexto.
 
 {{< figure src="img/map_init.png"  width="80%" height="100%" >}}
 
@@ -17,9 +17,13 @@ Una vez que la página se ha cargado por completo, el encuestado deberá procede
 
 {{< figure src="img/lista_casos.png"  width="80%" height="100%">}}
 
-Una vez que el usuario ha seleccionado uno de los casos de estudio listados en el selector, se mostrarán en el mapa dos nuevos elementos: 1.) un **marcador verde** que simboliza el origen de la ruta del caso de estudio seleccionado; y 2.) una **línea de meta** que simboliza el destino del caso de estudio seleccionado. En la siguiente imagen se muestra un ejemplo de estos dos elementos.
+Una vez que el usuario ha seleccionado uno de los casos de estudio listados en el selector, se mostrarán en el mapa dos nuevos elementos: 1.) un **marcador rojo** que simboliza el origen de la ruta del caso de estudio seleccionado; y 2.) una **línea de meta** que simboliza el destino del caso de estudio seleccionado. En la siguiente imagen se muestra un ejemplo de estos dos elementos. También se mostrará el **contexto** asociado al caso de estudio que ha sido seleccionado y que el encuestado debe tener en cuenta al diseñar la ruta.
 
 {{< figure src="img/inicio_caso.png" width="80%" height="100%">}}
+
+A continuación el encuestado debe indicar cual es su **grado de conocimiento de la ciudad**. Para ello simplemente se debe seleccionar unas de las opciones del segundo selector como se muestra en la siguiente imagen.
+
+{{< figure src="img/know_level.png" width="60%" height="100%">}}
 
 En el siguiente paso el encuestado deberá establecer la ruta mediante el uso de marcadores. Para **añadir un nuevo marcador** tan solo será necesario hacer click sobre el botón *Add marker*. En la siguiente imagen se muestra un ejemplo de este proceso, pudiéndose apreciar como dicho marcador (azul celeste) ha sido añadido junto a la Universidad de Castilla-La Mancha. Además, también se muestra la **ruta parcial** que une el último marcador añadido con el resto. 
 

@@ -263,8 +263,10 @@ figure {
                 <div>
                     
                     <h2 class="section-heading">Sobre la encuesta</h2>
-                    <p>La encuesta se compone de 10 escenarios distintos donde el encuestado debe <strong>indicar que ruta seguiría</strong> para llegar desde un origen hasta un destino que será marcado en cada uno de los mismos. El encuestado debe tener en cuenta que dicha ruta no debe ser una ruta cualquiera, si no aquella que, desde su punto de vista, <strong>maximiza el número de zonas peligrosas visitadas</strong>.</p>
+                    <p>La encuesta se compone de 10 escenarios distintos donde el encuestado debe <strong>indicar que ruta seguiría</strong> para llegar desde un origen hasta un destino en cada uno de los escenarios. El encuestado debe tener en cuenta que dicha ruta no debe ser una ruta cualquiera, si no aquella que, desde su punto de vista, <strong>minimiza el número de zonas peligrosas visitadas</strong>.</p>
 <p>Pero, <em>¿que entendemos como zonas peligrosas en el ámbito de este estudio?</em>. Aunque la respuesta se deja a interpretación del encuestado, una posible respuesta podría ser <strong>toda aquella zona que debido a la pandemia de COVID-19 puede poner en peligro nuestra salud o de la gente que nos rodea</strong>. Algunos ejemplos podrían ser los espacios cerrados, colegios, hospitales, etc. que debido a las condiciones que reúnen, facilita la propagación del virus.</p>
+<p>En cada escenario se proporciona un <strong>contexto</strong> (hora, dia de la semana, mes, si es fiesta local en la ciudad, etc.) que el encuestado debe tener en cuenta a la hora de diseñar cada ruta. Por ejemplo, si en el contexto se indica que es <em>lunes</em> a las <em>9:00</em> el encuestado debe imaginar que se encuentra bajo esas circunstancias y que la ruta debe considerar el estado de la ciudad dado ese contexto, como por ejemplo el tráfico, zonas que debido a la hora están más transitadas, etc.</p>
+<p>Finalmente también se solicitará al encuestado que indique cual es su nivel de conocimiento de la ciudad. Para ello se proporciona un desplegable con opciones que van desde el más bajo para indicar que no conoce nada de la ciudad hasta el nivel más alto que probablemente esté reservado para las personas que han vivido varios años en la ciudad.</p>
 
                 </div>
             </div>
@@ -287,7 +289,7 @@ figure {
                     <p>Para realizar la encuesta se ha puesto a disposición del encuestado un mapa web que facilitará la introducción de las diferentes rutas. Para acceder a dicho mapa web simplemente debe pulsar en el siguiente <a href="https://pike.esi.uclm.es:7166/"  target="_blank" >
   enlace.
 </a>Una vez dentro, el encuestado podrá ver un mapa web centrado en la ciudad de Ciudad Real.</p>
-<p>Como se puede apreciar en la siguiente imagen, la interfaz de dicho mapa es muy sencilla ya que dispone tan solo tres elementos: un selector de opciones y dos botones.</p>
+<p>Como se puede apreciar en la siguiente imagen, la interfaz de dicho mapa es muy sencilla ya que dispone tan solo de unos pocos elementos: un selector de casos, selector para indicar el grado de conocimiento de la ciudad, dos botones y la información del contexto.</p>
 <figure>
     <img src="img/map_init.png" width="80%" height="100%"/> 
 </figure>
@@ -297,9 +299,14 @@ figure {
     <img src="img/lista_casos.png" width="80%" height="100%"/> 
 </figure>
 
-<p>Una vez que el usuario ha seleccionado uno de los casos de estudio listados en el selector, se mostrarán en el mapa dos nuevos elementos: 1.) un <strong>marcador verde</strong> que simboliza el origen de la ruta del caso de estudio seleccionado; y 2.) una <strong>línea de meta</strong> que simboliza el destino del caso de estudio seleccionado. En la siguiente imagen se muestra un ejemplo de estos dos elementos.</p>
+<p>Una vez que el usuario ha seleccionado uno de los casos de estudio listados en el selector, se mostrarán en el mapa dos nuevos elementos: 1.) un <strong>marcador rojo</strong> que simboliza el origen de la ruta del caso de estudio seleccionado; y 2.) una <strong>línea de meta</strong> que simboliza el destino del caso de estudio seleccionado. En la siguiente imagen se muestra un ejemplo de estos dos elementos. También se mostrará el <strong>contexto</strong> asociado al caso de estudio que ha sido seleccionado y que el encuestado debe tener en cuenta al diseñar la ruta.</p>
 <figure>
     <img src="img/inicio_caso.png" width="80%" height="100%"/> 
+</figure>
+
+<p>A continuación el encuestado debe indicar cual es su <strong>grado de conocimiento de la ciudad</strong>. Para ello simplemente se debe seleccionar unas de las opciones del segundo selector como se muestra en la siguiente imagen.</p>
+<figure>
+    <img src="img/know_level.png" width="60%" height="100%"/> 
 </figure>
 
 <p>En el siguiente paso el encuestado deberá establecer la ruta mediante el uso de marcadores. Para <strong>añadir un nuevo marcador</strong> tan solo será necesario hacer click sobre el botón <em>Add marker</em>. En la siguiente imagen se muestra un ejemplo de este proceso, pudiéndose apreciar como dicho marcador (azul celeste) ha sido añadido junto a la Universidad de Castilla-La Mancha. Además, también se muestra la <strong>ruta parcial</strong> que une el último marcador añadido con el resto.</p>

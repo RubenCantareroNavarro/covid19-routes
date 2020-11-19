@@ -35,7 +35,7 @@
       
       <guid>https://rubencantareronavarro.github.io/covid19-routes/posts/procedimiento/</guid>
       <description>Para realizar la encuesta se ha puesto a disposición del encuestado un mapa web que facilitará la introducción de las diferentes rutas. Para acceder a dicho mapa web simplemente debe pulsar en el siguiente enlace. Una vez dentro, el encuestado podrá ver un mapa web centrado en la ciudad de Ciudad Real.
-Como se puede apreciar en la siguiente imagen, la interfaz de dicho mapa es muy sencilla ya que dispone tan solo tres elementos: un selector de opciones y dos botones.</description>
+Como se puede apreciar en la siguiente imagen, la interfaz de dicho mapa es muy sencilla ya que dispone tan solo de unos pocos elementos: un selector de casos, selector para indicar el grado de conocimiento de la ciudad, dos botones y la información del contexto.</description>
     </item>
     
     <item>
@@ -44,7 +44,7 @@ Como se puede apreciar en la siguiente imagen, la interfaz de dicho mapa es muy 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://rubencantareronavarro.github.io/covid19-routes/posts/sobre_la_encuesta/</guid>
-      <description>La encuesta se compone de 10 escenarios distintos donde el encuestado debe indicar que ruta seguiría para llegar desde un origen hasta un destino que será marcado en cada uno de los mismos. El encuestado debe tener en cuenta que dicha ruta no debe ser una ruta cualquiera, si no aquella que, desde su punto de vista, maximiza el número de zonas peligrosas visitadas.
+      <description>La encuesta se compone de 10 escenarios distintos donde el encuestado debe indicar que ruta seguiría para llegar desde un origen hasta un destino en cada uno de los escenarios. El encuestado debe tener en cuenta que dicha ruta no debe ser una ruta cualquiera, si no aquella que, desde su punto de vista, minimiza el número de zonas peligrosas visitadas.
 Pero, ¿que entendemos como zonas peligrosas en el ámbito de este estudio?</description>
     </item>
     
