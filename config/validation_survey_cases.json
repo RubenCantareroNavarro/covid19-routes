@@ -26,9 +26,9 @@
         "destiny": [-3.924748, 38.985628],
         "name": "Case 3",
         "context" : {
-            "time" : "10:00",
-            "week-day": "Monday",
-            "month": "January",
+            "time" : "17:00",
+            "week-day": "Saturday",
+            "month": "September",
             "is-public-holiday": "No"
         }
     },
@@ -37,10 +37,10 @@
         "destiny": [-3.944766, 38.979441],
         "name": "Case 4",
         "context" : {
-            "time" : "10:00",
-            "week-day": "Monday",
-            "month": "January",
-            "is-public-holiday": "No"
+            "time" : "14:00",
+            "week-day": "Wednesday",
+            "month": "February",
+            "is-public-holiday": "Yes"
         }
     },
     "case-005": {
@@ -49,8 +49,8 @@
         "name": "Case 5",
         "context" : {
             "time" : "10:00",
-            "week-day": "Monday",
-            "month": "January",
+            "week-day": "Friday",
+            "month": "March",
             "is-public-holiday": "No"
         }
     },
@@ -59,9 +59,9 @@
         "destiny": [-3.922468, 38.993613],
         "name": "Case 6",
         "context" : {
-            "time" : "10:00",
-            "week-day": "Monday",
-            "month": "January",
+            "time" : "24:00",
+            "week-day": "Thursday",
+            "month": "December",
             "is-public-holiday": "No"
         }
     },
@@ -81,10 +81,10 @@
         "destiny": [-3.934179, 38.986064],
         "name": "Case 8",
         "context" : {
-            "time" : "10:00",
-            "week-day": "Monday",
+            "time" : "22:00",
+            "week-day": "Tuesday",
             "month": "January",
-            "is-public-holiday": "No"
+            "is-public-holiday": "Yes"
         }
     },
     "case-009": {
@@ -92,7 +92,7 @@
         "destiny": [-3.946239, 38.979168],
         "name": "Case 9",
         "context" : {
-            "time" : "10:00",
+            "time" : "06:00",
             "week-day": "Monday",
             "month": "January",
             "is-public-holiday": "No"
@@ -103,20 +103,9 @@
         "destiny": [-3.922612, 38.998617],
         "name": "Case 10",
         "context" : {
-            "time" : "10:00",
+            "time" : "05:15",
             "week-day": "Monday",
-            "month": "January",
-            "is-public-holiday": "No"
-        }
-    },
-    "case-011": {
-        "origin": [-3.921642, 38.990293],
-        "destiny": [-3.928456, 38.986384],
-        "name": "Case 11",
-        "context" : {
-            "time" : "10:00",
-            "week-day": "Monday",
-            "month": "January",
+            "month": "April",
             "is-public-holiday": "No"
         }
     }
