@@ -13,7 +13,7 @@ Como se puede apreciar en la siguiente imagen, la interfaz de dicho mapa es muy 
 
 {{< figure src="img/map_init.png"  width="80%" height="100%" >}}
 
-Una vez que la página se ha cargado por completo, el encuestado deberá proceder a **seleccionar el caso de estudio que desea realizar**. Para ello, deberá dirigirse al selector como se muestra en la siguiente imagen y hacer click sobre el.
+Una vez que la página se ha cargado por completo, el encuestado deberá proceder a **seleccionar el caso de estudio que desea realizar**. Para ello, deberá dirigirse al selector como se muestra en la siguiente imagen y hacer click sobre el. 
 
 {{< figure src="img/lista_casos.png"  width="80%" height="100%">}}
 
@@ -25,7 +25,7 @@ A continuación el encuestado debe indicar cual es su **grado de conocimiento de
 
 {{< figure src="img/know_level.png" width="60%" height="100%">}}
 
-En el siguiente paso el encuestado deberá establecer la ruta mediante el uso de marcadores. Para **añadir un nuevo marcador** tan solo será necesario hacer click sobre el botón *Add marker*. En la siguiente imagen se muestra un ejemplo de este proceso, pudiéndose apreciar como dicho marcador (azul celeste) ha sido añadido junto a la Universidad de Castilla-La Mancha. Además, también se muestra la **ruta parcial** que une el último marcador añadido con el resto. 
+En el siguiente paso el encuestado deberá establecer la ruta mediante el uso de marcadores (tenga en cuenta que la ruta es a pie). Para **añadir un nuevo marcador** tan solo será necesario hacer click sobre el botón *Add marker*. En la siguiente imagen se muestra un ejemplo de este proceso, pudiéndose apreciar como dicho marcador (azul celeste) ha sido añadido junto a la Universidad de Castilla-La Mancha. Además, también se muestra la **ruta parcial** que une el último marcador añadido con el resto. 
 
 {{< figure src="img/anadir_marcador.png" width="80%" height="100%">}}
 
