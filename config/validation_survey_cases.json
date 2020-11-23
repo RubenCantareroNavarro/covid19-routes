@@ -4,21 +4,21 @@
         "destiny": [-3.921382, 38.984157],
         "name": "Case 1",
         "context" : {
-            "time" : "10:00",
+            "time" : "09:20",
             "week-day": "Monday",
-            "month": "January",
+            "month": "February",
             "is-public-holiday": "No"
         }
     },
     "case-002": {
-        "origin": [-3.937124, 38.988544],
-        "destiny": [-3.913950, 38.976525],
+        "origin": [-3.921768, 38.968320],
+        "destiny": [-3.924817, 38.992686],
         "name": "Case 2",
         "context" : {
-            "time" : "12:30",
-            "week-day": "Sunday",
-            "month": "July",
-            "is-public-holiday": "Yes"
+            "time" : "23:00",
+            "week-day": "Thursday",
+            "month": "May",
+            "is-public-holiday": "No"
         }
     },
     "case-003": {
@@ -26,21 +26,21 @@
         "destiny": [-3.924748, 38.985628],
         "name": "Case 3",
         "context" : {
-            "time" : "17:00",
-            "week-day": "Saturday",
-            "month": "September",
+            "time" : "11:00",
+            "week-day": "Tuesday",
+            "month": "October",
             "is-public-holiday": "No"
         }
     },
     "case-004": {
-        "origin": [-3.920680, 38.996011],
-        "destiny": [-3.944766, 38.979441],
+        "origin": [-3.921628, 38.979823],
+        "destiny": [-3.930252, 38.992741],
         "name": "Case 4",
         "context" : {
-            "time" : "14:00",
-            "week-day": "Wednesday",
-            "month": "February",
-            "is-public-holiday": "Yes"
+            "time" : "15:00",
+            "week-day": "Tuesday",
+            "month": "April",
+            "is-public-holiday": "No"
         }
     },
     "case-005": {
@@ -48,20 +48,20 @@
         "destiny": [-3.924817, 38.992686],
         "name": "Case 5",
         "context" : {
-            "time" : "10:00",
+            "time" : "14:00",
             "week-day": "Friday",
             "month": "March",
             "is-public-holiday": "No"
         }
     },
     "case-006": {
-        "origin": [-3.937404, 38.985709],
-        "destiny": [-3.922468, 38.993613],
+        "origin": [-3.915842, 38.986036],
+        "destiny": [-3.946239, 38.979168],
         "name": "Case 6",
         "context" : {
-            "time" : "24:00",
-            "week-day": "Thursday",
-            "month": "December",
+            "time" : "09:10",
+            "week-day": "Monday",
+            "month": "Nobember",
             "is-public-holiday": "No"
         }
     },
@@ -70,20 +70,20 @@
         "destiny": [-3.930252, 38.992741],
         "name": "Case 7",
         "context" : {
-            "time" : "10:00",
-            "week-day": "Monday",
-            "month": "January",
+            "time" : "15:00",
+            "week-day": "Sunday",
+            "month": "April",
             "is-public-holiday": "No"
         }
     },
     "case-008": {
-        "origin": [-3.918506, 38.991460],
-        "destiny": [-3.934179, 38.986064],
+        "origin": [-3.927412, 38.998245],
+        "destiny": [-3.924748, 38.985628],
         "name": "Case 8",
         "context" : {
-            "time" : "22:00",
+            "time" : "10:15",
             "week-day": "Tuesday",
-            "month": "January",
+            "month": "February",
             "is-public-holiday": "Yes"
         }
     },
@@ -92,20 +92,20 @@
         "destiny": [-3.946239, 38.979168],
         "name": "Case 9",
         "context" : {
-            "time" : "06:00",
+            "time" : "09:10",
             "week-day": "Monday",
-            "month": "January",
+            "month": "August",
             "is-public-holiday": "No"
         }
     },
     "case-010": {
-        "origin": [-3.943259, 38.971809],
-        "destiny": [-3.922612, 38.998617],
+        "origin": [-3.937125, 38.998054],
+        "destiny": [-3.921382, 38.984157],
         "name": "Case 10",
         "context" : {
-            "time" : "05:15",
-            "week-day": "Monday",
-            "month": "April",
+            "time" : "12:30",
+            "week-day": "Sunday",
+            "month": "March",
             "is-public-holiday": "No"
         }
     }
