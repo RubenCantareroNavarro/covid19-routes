@@ -14,3 +14,8 @@ Pero, *¿que entendemos como zonas peligrosas en el ámbito de este estudio?* Au
 En cada escenario se proporciona un **contexto** (hora, dia de la semana, mes, si es fiesta local en la ciudad, etc.) que el encuestado debe tener en cuenta a la hora de diseñar cada ruta. Por ejemplo, si en el contexto se indica que es *lunes* a las *9:00* el encuestado debe imaginar que se encuentra bajo esas circunstancias y que la ruta debe considerar el estado de la ciudad dado ese contexto, como por ejemplo el tráfico, zonas que debido a la hora están más transitadas, etc.
 
 Finalmente también se solicitará al encuestado que indique cual es **su nivel de conocimiento de la ciudad**. Para ello se proporciona un desplegable con opciones que van desde el más bajo para indicar que no conoce nada de la ciudad hasta el nivel más alto que probablemente esté reservado para las personas que han vivido varios años en la ciudad.
+
+***IMPORTANTE** El encuestado puede contestar los escenarios en **el orden que desee**. Aunque se agradece que se contesten al mayor número de escenarios, el encuestado tiene la libertad de contestar **solo a los que considere oportunos**.*
+
+{{< youtube Xj4Ueb9poO8>}}
+
