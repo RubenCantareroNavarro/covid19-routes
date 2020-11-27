@@ -41,10 +41,6 @@ Se ha incorporado un cuadro de texto donde el encuestado puede, si lo desea, rea
 
 {{< figure src="img/comments.png" width="80%" height="100%">}}
 
-De manera completamente opcional el encuestado puede proporcional su email de forma que sea posible identificar que rutas ha realizado. Es importante destacar que nunca compartiremos su correo electrónico con nadie más.
-
-{{< figure src="img/email.png" width="80%" height="100%">}}
-
 Como se muestra en la siguiente imagen, el encuestado deberá indicar su género y en qué rango de edad se encuentra.
 
 {{< figure src="img/edad_genero.png" width="80%" height="100%">}}

@@ -82,7 +82,7 @@ publishDir = "./public"
     qq             = "" # User ID Number
     instagram        = ""
     tumblr           = ""
-    twitter          = "rubencn90"
+    twitter          = ""
     skype            = ""
     snapchat         = ""
     pinterest        = ""
@@ -92,7 +92,7 @@ publishDir = "./public"
     orcid            = ""
     researchgate     = ""
     # Email
-    email = "Ruben.Cantarero@uclm.es"
+    email = "covid19.routes@gmail.com"
 
 #
 # Adjust privacy settings
