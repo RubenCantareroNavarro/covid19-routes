@@ -7,6 +7,8 @@ import networkx as nx
 import utilities
 import os
 import json
+import csv
+
 ox.config(use_cache=True, log_console=False)
 
 # Define and prepare data
@@ -55,7 +57,7 @@ if __name__ == '__main__':
 
     best_routes = calculate_best_routes()
 
- 
+    csv_data = []
     for currentpath, folders, files in os.walk(survey_dir):
         for file in files:            
             with open(os.path.join(survey_dir, currentpath, file)) as json_file:
@@ -68,3 +70,22 @@ if __name__ == '__main__':
 
                 print([file, case_id, [survey_number_danger_points, survey_route_length], [best_routes[case_id]["number_danger_points"], best_routes[case_id]["route_length"]]])
 
+                csv_data.append({
+                    'file_name': file, 
+                    'case_id': case_id, 
+                    'knowledge_city_level': route['properties']['knowledge_city_level'], 
+                    'age':  route['properties']['age'], 
+                    'gender': route['properties']['gender'], 
+                    'comments': route['properties']['comments'], 
+                    'survey_number_danger_points': survey_number_danger_points, 
+                    'survey_route_length': survey_route_length, 
+                    'best_number_danger_points': best_routes[case_id]["number_danger_points"], 
+                    'best_route_length': best_routes[case_id]["route_length"]
+                })
+            
+    with open('validation_survey_summary.csv', mode='w') as csv_file:
+        fieldnames = ['file_name', 'case_id', 'knowledge_city_level', 'age', 'gender', 'comments', 'survey_number_danger_points', 'survey_route_length', 'best_number_danger_points', 'best_route_length']
+        writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+
+        writer.writeheader()
+        writer.writerows(csv_data)
