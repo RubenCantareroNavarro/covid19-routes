@@ -18,7 +18,8 @@ def geojson_to_file(file_name, data):
 def create_features(nodes_near, danger_level, amenity_near):
     features = []
     for node in nodes_near:
-        feature = geojson.Feature(geometry=geojson.Point((node.lon, node.lat)), properties={"osm_id": node.id, "danger" : danger_level, "amenity_near" : amenity_near})
+        # The decimal precision in osmnx is seven. By default, the geojson library uses precision 6
+        feature = geojson.Feature(geometry=geojson.Point((node.lon, node.lat), precision=7), properties={"osm_id": node.id, "danger" : danger_level, "amenity_near" : amenity_near})
         features.append(feature)
 
     return features
@@ -46,7 +47,7 @@ def route_to_geojson(G, route):
     for node_id in route:
         nodes_coord.append([G.nodes[node_id]['x'], G.nodes[node_id]['y']])
 
-    line_string = geojson.LineString(nodes_coord)
+    line_string = geojson.LineString(nodes_coord, precision=7)
     feature = geojson.Feature(geometry=line_string)
 
     return feature

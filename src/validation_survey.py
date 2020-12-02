@@ -33,7 +33,7 @@ def calculate_best_routes():
         destination_node = ox.get_nearest_node(G, [destiny[1], destiny[0]])
 
         # ToDo: lenght? or weight?
-        route = nx.shortest_path(G, origin_node, destination_node, weight='length')
+        route = nx.shortest_path(G, origin_node, destination_node, weight='weight')
         best_routes[case_id] = {}
         best_routes[case_id]["route_nodes"] = route
         best_routes[case_id]["route_coordinates"] = utilities.route_to_geojson(G, route)
@@ -46,12 +46,12 @@ if __name__ == '__main__':
     with open(amenities_file) as geojson_file:
         amenities = json.load(geojson_file)
 
-    # utilities.load_danger_points(bottom_left, top_right, danger_nodes_file_cache, amenities)
+    utilities.load_danger_points(bottom_left, top_right, danger_nodes_file_cache, amenities)
     with open(danger_nodes_file_cache) as json_file:
         danger_points_data = json.load(json_file)
 
     G = utilities.init_graph(bottom_left, top_right, graph_file_cache, amenities)
-    utilities.load_danger_points(bottom_left, top_right, danger_nodes_file_cache, amenities)
+    # utilities.load_danger_points(bottom_left, top_right, danger_nodes_file_cache, amenities)
 
     best_routes = calculate_best_routes()
 
