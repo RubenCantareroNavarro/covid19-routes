@@ -8,6 +8,8 @@ import utilities
 import os
 import json
 import csv
+import sys
+from geopy.distance import geodesic
 
 ox.config(use_cache=True, log_console=False)
 
@@ -19,7 +21,7 @@ graph_file_cache = os.path.join(project_dir, 'src/cache/ciudad-real-graph.graphm
 danger_nodes_file_cache = os.path.join(project_dir, 'src/cache/ciudad-real-danger-nodes.geojson')
 amenities_file = os.path.join(project_dir, 'config/amenities_config.json')
 survey_cases_config = os.path.join(project_dir, 'config/validation_survey_cases.json')
-survey_dir = os.path.join(project_dir, 'data/survey')
+survey_dir = sys.argv[1]
 
 
 def calculate_best_routes():
@@ -53,8 +55,6 @@ if __name__ == '__main__':
         danger_points_data = json.load(json_file)
 
     G = utilities.init_graph(bottom_left, top_right, graph_file_cache, amenities)
-    # utilities.load_danger_points(bottom_left, top_right, danger_nodes_file_cache, amenities)
-
     best_routes = calculate_best_routes()
 
     csv_data = []
@@ -63,6 +63,9 @@ if __name__ == '__main__':
             with open(os.path.join(survey_dir, currentpath, file)) as json_file:
                 route = json.load(json_file)
                 case_id = route['properties']['case_id']
+                case_last_point = best_routes[case_id]["route_coordinates"]['geometry']['coordinates'][-1]
+                current_last_point = route['geometry']['coordinates'][-1]
+                distance_ends = geodesic([case_last_point[1], case_last_point[0]], [current_last_point[1], current_last_point[0]]).meters
 
                 survey_number_danger_points = utilities.routes_operations.number_danger_points_in_route(danger_points_data, route)
                 survey_route_nodes = utilities.routes_operations.coordinates_to_graph_nodes(G, route)
@@ -80,11 +83,13 @@ if __name__ == '__main__':
                     'survey_number_danger_points': survey_number_danger_points, 
                     'survey_route_length': survey_route_length, 
                     'best_number_danger_points': best_routes[case_id]["number_danger_points"], 
-                    'best_route_length': best_routes[case_id]["route_length"]
+                    'best_route_length': best_routes[case_id]["route_length"],
+                    'distance_ends (m)': distance_ends,
+                    'valid': distance_ends < 200
                 })
             
     with open('validation_survey_summary.csv', mode='w') as csv_file:
-        fieldnames = ['file_name', 'case_id', 'knowledge_city_level', 'age', 'gender', 'comments', 'survey_number_danger_points', 'survey_route_length', 'best_number_danger_points', 'best_route_length']
+        fieldnames = ['file_name', 'case_id', 'knowledge_city_level', 'age', 'gender', 'comments', 'survey_number_danger_points', 'survey_route_length', 'best_number_danger_points', 'best_route_length', 'distance_ends (m)', 'valid']
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
 
         writer.writeheader()
