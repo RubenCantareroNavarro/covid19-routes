@@ -17,9 +17,9 @@ ox.config(use_cache=True, log_console=False)
 bottom_left = [38.954487, -3.958351]
 top_right = [39.012350, -3.863268]
 project_dir = commodity.path.get_project_dir('.')
-graph_file_cache = os.path.join(project_dir, 'src/cache/ciudad-real-graph.graphml')
-danger_nodes_file_cache = os.path.join(project_dir, 'src/cache/ciudad-real-danger-nodes.geojson')
-amenities_file = os.path.join(project_dir, 'config/amenities_config.json')
+graph_file_cache = os.path.join(project_dir, 'src/cache/ciudad-real-graph_case-010.graphml')
+danger_nodes_file_cache = os.path.join(project_dir, 'src/cache/ciudad-real-danger-nodes_case-010.geojson')
+amenities_file = os.path.join(project_dir, 'config/amenities_case-010_config.json')
 survey_cases_config = os.path.join(project_dir, 'config/validation_survey_cases.json')
 survey_dir = sys.argv[1]
 
@@ -88,9 +88,11 @@ if __name__ == '__main__':
                     'valid': distance_ends < 200
                 })
             
-    with open('validation_survey_summary.csv', mode='w') as csv_file:
+    with open(os.path.join(survey_dir, 'validation_survey_summary.csv'), mode='w') as csv_file:
         fieldnames = ['file_name', 'case_id', 'knowledge_city_level', 'age', 'gender', 'comments', 'survey_number_danger_points', 'survey_route_length', 'best_number_danger_points', 'best_route_length', 'distance_ends (m)', 'valid']
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
 
         writer.writeheader()
         writer.writerows(csv_data)
+
+
