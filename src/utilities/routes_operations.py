@@ -8,7 +8,9 @@ def number_danger_points_in_route(danger_points_data, route):
     last_point = []
 
     for feature in danger_points_data['features']:
-        danger_points.append(feature['geometry']['coordinates'])
+        danger_at_point = float(feature['properties']['danger'])
+        if(danger_at_point > 1):
+            danger_points.append(feature['geometry']['coordinates'])
 
     for point in route['geometry']['coordinates']: 
         if last_point == point:
@@ -37,16 +39,3 @@ def coordinates_to_graph_nodes(G, route):
         last_point = point
 
     return route_nodes
-
-    # for i in range(0, len(route['geometry']['coordinates']) - 1, 2):
-    #     point1 = route['geometry']['coordinates'][i]
-    #     point2 = route['geometry']['coordinates'][i + 1]
-
-    #     node1 = ox.get_nearest_node(G, [point1[1], point1[0]])
-    #     node2 = ox.get_nearest_node(G, [point2[1], point2[0]])
-
-    #     route_edges.append(G.adj[node1][node2][0]["osmid"])
-
-    # print(route_edges)
-    # return route_edges
-    
