@@ -34,8 +34,8 @@ survey_cases_config = os.path.join(project_dir, 'config/validation_survey_cases.
 
 
 
-def calculate_best_route():
-    best_route = {}
+def calculate_system_route():
+    system_routes = {}
     with open(survey_cases_config) as json_file:
         survey_cases = json.load(json_file)
     
@@ -46,13 +46,22 @@ def calculate_best_route():
     destination_node = ox.get_nearest_node(G, [destiny[1], destiny[0]])
 
     route = nx.shortest_path(G, origin_node, destination_node, weight='weight')
+    system_routes["safest"] = {}
+    system_routes["safest"]["route_nodes"] = route
+    system_routes["safest"]["route_coordinates"] = utilities.route_to_geojson(G, route)
+    system_routes["safest"]["route_length"] = utilities.routes_operations.route_length(G, route)
+    system_routes["safest"]["route_weight"] = utilities.routes_operations.route_weight(G, route)
+    system_routes["safest"]["number_danger_points"] = utilities.routes_operations.number_danger_points_in_route(danger_points_data, system_routes["safest"]["route_coordinates"])
 
-    best_route["route_nodes"] = route
-    best_route["route_coordinates"] = utilities.route_to_geojson(G, route)
-    best_route["route_length"] = utilities.routes_operations.route_cost(G, route)
-    best_route["number_danger_points"] = utilities.routes_operations.number_danger_points_in_route(danger_points_data, best_route["route_coordinates"])
-    
-    return best_route
+
+    route = nx.shortest_path(G, origin_node, destination_node, weight='length')
+    system_routes["shortest"] = {}
+    system_routes["shortest"]["route_nodes"] = route
+    system_routes["shortest"]["route_coordinates"] = utilities.route_to_geojson(G, route)
+    system_routes["shortest"]["route_length"] = utilities.routes_operations.route_length(G, route)
+    system_routes["shortest"]["route_weight"] = utilities.routes_operations.route_weight(G, route)
+    system_routes["shortest"]["number_danger_points"] = utilities.routes_operations.number_danger_points_in_route(danger_points_data, system_routes["shortest"]["route_coordinates"])
+    return system_routes
 
 if __name__ == '__main__':
     with open(amenities_file) as geojson_file:
@@ -63,7 +72,7 @@ if __name__ == '__main__':
         danger_points_data = json.load(json_file)
 
     G = utilities.init_graph(bottom_left, top_right, graph_file_cache, amenities)
-    best_route = calculate_best_route()
+    system_routes = calculate_system_route()
 
     csv_data = []
     for currentpath, folders, files in os.walk(survey_results_case_dir):
@@ -71,15 +80,16 @@ if __name__ == '__main__':
             with open(os.path.join(survey_results_case_dir, currentpath, file)) as json_file:
                 route = json.load(json_file)
                 case_id = route['properties']['case_id']
-                case_last_point = best_route["route_coordinates"]['geometry']['coordinates'][-1]
+                case_last_point = system_routes["safest"]["route_coordinates"]['geometry']['coordinates'][-1]
                 current_last_point = route['geometry']['coordinates'][-1]
                 distance_ends = geodesic([case_last_point[1], case_last_point[0]], [current_last_point[1], current_last_point[0]]).meters
 
                 survey_number_danger_points = utilities.routes_operations.number_danger_points_in_route(danger_points_data, route)
                 survey_route_nodes = utilities.routes_operations.coordinates_to_graph_nodes(G, route)
-                survey_route_length = utilities.routes_operations.route_cost(G, survey_route_nodes)
+                survey_route_length = utilities.routes_operations.route_length(G, survey_route_nodes)
+                survey_route_weight = utilities.routes_operations.route_weight(G, survey_route_nodes)
 
-                print([file, case_id, [survey_number_danger_points, survey_route_length], [best_route["number_danger_points"], best_route["route_length"]]])
+                print([file, case_id, [survey_number_danger_points, survey_route_length], [system_routes["safest"]["number_danger_points"], system_routes["safest"]["route_length"]]])
 
                 csv_data.append({
                     'file_name': file, 
@@ -90,8 +100,13 @@ if __name__ == '__main__':
                     'comments': route['properties']['comments'], 
                     'survey_number_danger_points': survey_number_danger_points, 
                     'survey_route_length': survey_route_length, 
-                    'best_number_danger_points': best_route["number_danger_points"], 
-                    'best_route_length': best_route["route_length"],
+                    'survey_route_weight': survey_route_weight, 
+                    'safest_number_danger_points': system_routes["safest"]["number_danger_points"], 
+                    'safest_route_length': system_routes["safest"]["route_length"],
+                    'safest_route_weight': system_routes["safest"]["route_weight"],
+                    'shortest_number_danger_points': system_routes["shortest"]["number_danger_points"], 
+                    'shortest_route_length': system_routes["shortest"]["route_length"],
+                    'shortest_route_weight': system_routes["shortest"]["route_weight"],
                     'distance_ends (m)': distance_ends,
                     'valid': distance_ends < 200
                 })
@@ -99,15 +114,17 @@ if __name__ == '__main__':
     if not os.path.exists(results_dir):
         try:
             os.makedirs(os.path.join(results_dir, 'summaries'))
-            os.makedirs(os.path.join(results_dir, 'best_routes'))
+            os.makedirs(os.path.join(results_dir, 'system_routes'))
         except OSError:
             print ("Creation of the directory %s failed" % file_path)
 
     with open(os.path.join(results_dir, 'summaries' , case_id + '_validation_survey_summary.csv'), mode='w') as csv_file:
-        fieldnames = ['file_name', 'case_id', 'knowledge_city_level', 'age', 'gender', 'comments', 'survey_number_danger_points', 'survey_route_length', 'best_number_danger_points', 'best_route_length', 'distance_ends (m)', 'valid']
+        fieldnames = ['file_name', 'case_id', 'knowledge_city_level', 'age', 'gender', 'comments', 'survey_number_danger_points', 'survey_route_length', 'survey_route_weight', 'safest_number_danger_points', 'safest_route_length', 'safest_route_weight', 'shortest_number_danger_points', 'shortest_route_length', 'shortest_route_weight', 'distance_ends (m)', 'valid']
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
 
         writer.writeheader()
         writer.writerows(csv_data)
+        
 
-    utilities.geojson_to_file(os.path.join(results_dir, 'best_routes', case_id + '_best_route.geojson'),  utilities.route_to_geojson(G, best_route["route_nodes"])) 
+    utilities.geojson_to_file(os.path.join(results_dir, 'system_routes', case_id + '_safest_route.geojson'),  utilities.route_to_geojson(G, system_routes["safest"]["route_nodes"])) 
+    utilities.geojson_to_file(os.path.join(results_dir, 'system_routes', case_id + '_shortest_route.geojson'),  utilities.route_to_geojson(G, system_routes["shortest"]["route_nodes"])) 

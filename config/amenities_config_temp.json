@@ -1,0 +1,7 @@
+{
+    "school": {
+        "correction_factor": 30000.0,
+        "danger_level": 300.0,
+        "radius": 50
+    }
+}

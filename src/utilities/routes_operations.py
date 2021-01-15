@@ -23,8 +23,11 @@ def number_danger_points_in_route(danger_points_data, route):
 
     return cont
 
-def route_cost(G, route):
+def route_length(G, route):
     return sum([G[route[i]][route[i+1]][0]['length'] for i in range(len(route)-1)])
+
+def route_weight(G, route):
+    return sum([G[route[i]][route[i+1]][0]['weight'] for i in range(len(route)-1)])
 
 def coordinates_to_graph_nodes(G, route):
     route_nodes = []

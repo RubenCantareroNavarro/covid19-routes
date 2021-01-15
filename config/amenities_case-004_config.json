@@ -1,19 +1,19 @@
 {
     "school": {
         "correction_factor": 100.0,
-        "danger_level": 2.0,
+        "danger_level": 10.0,
         "radius": 50
     },
 
     "university": {
         "correction_factor": 100.0,
-        "danger_level": 2.0,
+        "danger_level": 10.0,
         "radius": 50
     },
 
     "college": {
         "correction_factor": 100.0,
-        "danger_level": 2.0,
+        "danger_level": 10.0,
         "radius": 50
     },
 
@@ -36,26 +36,26 @@
     },
 
     "pub": {
-        "correction_factor": 1,
+        "correction_factor": 1.0,
         "danger_level": 1.0,
         "radius": 50
     },
 
     "cinema": {
-        "correction_factor": 1,
+        "correction_factor": 1.0,
         "danger_level": 1.0,
         "radius": 50
     },
 
     "theatre": {
-        "correction_factor": 1,
+        "correction_factor": 1.0,
         "danger_level": 1.0,
         "radius": 50
     },
 
     "hospital": {
         "correction_factor": 50000.0,
-        "danger_level": 400.0,
+        "danger_level": 500.0,
         "radius": 50
     }
 
